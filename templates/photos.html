@@ -1,0 +1,15 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvTitle"><b>Fotos</b></div>
+<div id="dvItems">
+    {% for photo in photos %}
+        <div id="tblItems" style="text-align: center">
+            <b>{{photo.added}}: {{photo.title}}</b>
+            <br>
+            <img class="clsPhoto" src="data:image/png;base64,{{photo.image.encode('base64')}}">
+        </div>
+    {% else %}
+        No hay fotos registradas.
+    {% endfor %}
+</div>
+{% endblock %}

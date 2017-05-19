@@ -1,0 +1,62 @@
+application: cn-escualos
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: res/favicon.ico
+  upload: res/favicon\.ico
+
+- url: /template\.css
+  static_files: templates/template.css
+  upload: templates/template\.css
+
+- url: /res
+  static_dir: res
+
+- url: /templates
+  static_dir: templates
+  application_readable: yes
+
+- url: /
+  script: handlers.main.app
+
+- url: /members
+  script: handlers.members.app
+
+- url: /trials
+  script: handlers.trials.app
+
+- url: /news
+  script: handlers.news.app
+
+- url: /photos
+  script: handlers.photos.app
+
+- url: /docs
+  script: handlers.docs.app
+
+- url: /docserver
+  script: handlers.docserver.app
+
+- url: /error
+  script: handlers.error.app
+
+- url: /admin
+  script: handlers.admin.app
+  login: admin
+
+- url: .*
+  script: handlers.error.app
+
+libraries:
+- name: webapp2
+  version: latest
+
+- name: jinja2
+  version: latest
+
+- name: PIL
+  version: latest

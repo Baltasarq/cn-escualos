@@ -1,0 +1,23 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvTitle"><b>Miembros</b></div>
+<div id="dvItems">
+    <table width="100%">
+    {% for member in members %}
+        <tr width="100%">
+            <td width="20%">
+            {% if member.photo %}
+                <img src="data:image/png;base64,{{member.photo.encode('base64')}}">
+            {% endif %}
+            </td>
+            <td width="80%" id="tblItems">
+                <b>{{member.surname}}, {{member.name}}</b>
+                <br/><i>{{member.comments}}</i>
+            </td>
+        </tr>
+    {% else %}
+        No hay miembros registrados.
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}

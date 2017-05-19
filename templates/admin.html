@@ -1,0 +1,104 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvWarning">
+    <img height="24px" height="24px" src="/res/warning.svg" title="warning" alt="warning">
+    &nbsp;Admin mode
+</div>
+<div id="dvTitle">
+    <table width="100%">
+        <tr>
+            <td width="10%"><b>Cfg</b></td>
+        </tr>
+    </table>
+</div>
+<div id="dvManagement">
+    <form id="frmCfg" method="post" action="/admin" enctype="multipart/form-data">
+        <b><label for="edDni">DNI</label></b> <input type="text" placeholder="dni" name="edDni" id="edDni">
+        <label for="edLic">License</label> <input type="text" placeholder="license" name="edLic" id="edLic">
+        <label for="edSoc">Membership #</label> <input type="text" placeholder="membership #" name="edSoc" id="edSoc">
+        <br/>
+        <label for="edName">Name</label> <input type="text" placeholder="name" name="edName" id="edName">
+        <label for="edSurname">Surname</label> <input type="text" placeholder="surname" name="edSurname" id="edSurname">
+        <br/>
+        <label for="edBirth">Birth date</label> <input type="date" value="01/01/1980" name="edBirth" id="edBirth">
+        <br />
+        <label for="edActive">Active</label> <input type="text" value="yes" name="edActive" id="edActive">
+        <br/>
+        <label for="edComments">Comments</label> <textarea placeholder="comments" name="edComments" id="edComments"></textarea>
+        <br>
+        <label for="edPhoto">Upload photo file (will be scaled to 64x64)</label> <input type="file" name="edPhoto" id="edPhoto" />
+        <br/>
+        <select id="edOpMember" name="edOpMember">
+            <option value="nop">Nop</option>
+            <option value="add">Add</option>
+            <option value="modify">Modify</option>
+            <option value="delete">Delete</option>
+            <option value="list">List</option>
+        </select><input type="submit" value="Add, delete or modify member; list members">
+        <p></p>
+        <hr>
+        <b><label for="edDate">Date</label></b> <input type="date" placeholder="date" name="edDate" id="edDate">
+        <br>
+        <label for="edTrialName">Name</label> <input type="text" placeholder="trial name" name="edTrialName" id="edTrialName">
+        <br>
+        <label for="edRemarks">Remarks</label> <textarea placeholder="remarks" name="edRemarks" id="edRemarks"></textarea>
+        <br>
+        <label for="edPoster">Upload poster file (advised height:400px)</label> <input type="file" name="edPoster" id="edPoster" />
+        <br/>
+        <select id="edOpTrial" name="edOpTrial">
+            <option value="nop">Nop</option>
+            <option value="add">Add</option>
+             <option value="modify">Modify</option>
+            <option value="delete">Delete</option>
+        </select><input type="submit" value="Add, delete or modify trial">
+        <hr>
+        <b><label for="edTitle">Title</label></b> <input type="text" placeholder="News title..." name="edTitle" id="edTitle">
+        <br>
+        <b><label for="edBody">Body</label></b>
+        <textarea name="edBody" id="edBody" placeholder="News body..." rows="3" cols="40"></textarea>
+        <br>
+        <b><label for="edUrl">URL</label></b> <input type="text" placeholder="News url..." name="edUrl" id="edUrl">
+        <br>
+        <select id="edOpNews" name="edOpNews">
+            <option value="nop">Nop</option>
+            <option value="add">Add</option>
+            <option value="delete">Delete</option>
+        </select><input type="submit" value="Add or delete news">
+        <hr>
+        <b><label for="edPhotoTitle">Photo title</label></b> <input type="text" placeholder="Photo title..." name="edPhotoTitle" id="edPhotoTitle">
+        <br>
+        <b><label for="edPhotoTags">Photo tags</label></b> <input type="text" placeholder="Photo tags separated by commas..." name="edPhotoTags" id="edPhotoTags">
+        <br>
+        <label for="edPhotoImage">Upload photo file (advised max height:400px)</label> <input type="file" name="edPhotoImage" id="edPhotoImage" />
+        <br>
+        <select id="edOpPhoto" name="edOpPhoto">
+            <option value="nop">Nop</option>
+            <option value="add">Add</option>
+            <option value="delete">Delete</option>
+        </select>
+        <input type="submit" value="Add or delete photo">
+        <hr>
+        <b><label for="edDocTitle">Document title</label></b> <input type="text" placeholder="Photo title..." name="edDocTitle" id="edDocTitle">
+        <br>
+        <b><label for="edDocTags">Document tags</label></b> <input type="text" placeholder="Document tags separated by commas..." name="edDocTags" id="edDocTags">
+        <br>
+        <label for="edDocFile">Upload document file</label> <input type="file" name="edDocFile" id="edDocFile" />
+        <br>
+        <select id="edOpDoc" name="edOpDoc">
+            <option value="nop">Nop</option>
+            <option value="add">Add</option>
+            <option value="delete">Delete</option>
+        </select>
+        <input type="submit" value="Add or delete document">
+    </form>
+</div>
+<div id="dvItems" width="100%">
+    <p><table width="100%"><tr>
+        <td><a target="_blank" href="/members">Members</a></td>
+        <td><a target="_blank" href="/photos">Photos</a></td>
+        <td><a target="_blank" href="/news">News</a></td>
+        <td><a target="_blank" href="/trials">Trials</a></td>
+        <td><a target="_blank" href="/docs">Documents</a></td>
+    </tr></table></p>
+</div>
+{% endblock %}

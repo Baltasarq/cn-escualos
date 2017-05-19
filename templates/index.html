@@ -1,0 +1,47 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div>
+    <table width="100%">
+        <tr>
+             <td width="25%"><p align="center"><img src="res/escualos.png" height="200" width="200"/></p></td>
+            <td width="75%"><p align="center"><img src="/res/header.jpg"></p></td>
+        </tr>
+    </table>
+</div>
+
+    <div id="dvItems">
+    {% for notice in news %}
+    <div id="tblItems">
+        <p>
+        <b>{{notice.added}}: {{notice.title}}</b>
+        <br/><i>{{notice.body}}</i>
+        {% if notice.url %}
+            <p align="right"><a target="_blank" href="{{notice.url}}"><b>&gt;&gt;</b></a></p>
+        {% endif %}
+        </p>
+    </div>
+    {% else %}
+        No hay noticias registradas.
+    {% endfor %}
+</div>
+
+<div id="dvAqa">
+    <table width="100%">
+        <tr>
+            <td>
+                <a href="http://aqadeporteysalud.net/centros-deportivos/aqa-ourense.html" target="_blank">
+                    <p align="center"><img src="/res/aqa_ourense.png"></p>
+                </a>
+            </td>
+            <td>
+                <p align="center"><b>Piscina de entrenamientos: Piscina Universitaria AQA</b></p>
+                <p align="center"><i>Campus Univ. (32004, Ourense). +34 988 101 717
+                                 <br><a href="http://aqadeporteysalud.net/centros-deportivos/aqa-ourense.html" target="_blank">http://aqadeporteysalud.net/centros-deportivos/aqa-ourense.html</a>
+                                 </i></p>
+            </td>
+        </tr>
+    </table>
+</div>
+    <p align="center"><b>Club Nataci&oacute;n Escualos</b>
+    <br/><i>27528 Lugar de San Cristobo, s/n. Parroquia de Cova, concello de Carballedo, Lugo</i></p>
+{% endblock %}

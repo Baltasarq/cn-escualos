@@ -1,0 +1,23 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvTitle"><b>Pruebas</b></div>
+<div id="dvItems">
+    <table width="100%">
+    {% for trial in trials %}
+        <tr width="100%">
+            <td width="20%">
+            {% if trial.poster %}
+                <img class="clsPhoto" src="data:image/png;base64,{{trial.poster.encode('base64')}}">
+            {% endif %}
+            </td>
+            <td width="80%" id="tblItems">
+                <b>{{trial.date}}: {{trial.name}}</b>
+                <br/><i>{{trial.comments}}</i>
+            </td>
+        </tr>
+    {% else %}
+        No hay pruebas registradas.
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}

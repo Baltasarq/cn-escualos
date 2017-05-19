@@ -1,0 +1,2 @@
+{% for member in members %}"{{ member.dni }}", {{ member.birth }}, {{ member.added }}, "{{ member.surname }}", "{{ member.name }}", {{ member.soc }}, {{ member.lic }}, "{{ member.comments }}"
+{% endfor %}

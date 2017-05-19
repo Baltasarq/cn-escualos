@@ -1,0 +1,111 @@
+#dvHeader {
+  margin: 1px;
+  font-size: 14px;
+  font-style: italic;
+  text-transform: capitalize;
+  color: black;
+  background-color: lightgray;
+}
+
+#dvTitle {
+  padding: 5px;
+  background-color: gray;
+  color: white;
+  font-size: 14pt
+}
+
+#dvError {
+  display: none;
+  color: white;
+  background-color: red;
+  margin: 20px;
+  padding: 10px;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+#dvWarning {
+  color: black;
+  background-color: yellow;
+  margin: 20px;
+  padding: 10px;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+.clsMenu {
+    margin: 5px;
+    font-weight: bolder;
+    font-size: 10pt;
+    text-align: center;
+}
+
+#dvContainer {
+    display: table;
+    margin: 10px;
+    width: 98%;
+}
+
+#dvActions {
+    display: table-cell;
+    width: 20%;
+    margin: 1px;
+    position: fixed;
+    top: 25%
+}
+#dvContents {
+    display: table-cell;
+    width: 80%;
+    padding: 5px;
+    vertical-align: middle
+}
+
+#dvItems {
+  margin: 20px;
+  padding: 20px;
+}
+
+#tblItems {
+  background-color: lightgray;
+  font-size:12pt;
+}
+
+input.button {
+  background-color: black;
+  color: blue
+}
+
+.clsPhoto {
+    max-width: 400px;
+    max-height: 400px
+}
+
+/* Hyperlinks */
+a {
+	color: blue;
+	text-decoration:none;
+}
+
+a:hover {
+	color: darkblue;
+	text-decoration:none
+}
+
+a:visited {
+	color: blue;
+	text-decoration:none
+}
+
+/* Buttons */
+.styled-button {
+    background-color: deepskyblue;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	padding:5px 5px;
+	font-family: sans-serif;
+	font-size:10px;
+	border-radius:5px;
+}

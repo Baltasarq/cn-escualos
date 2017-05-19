@@ -1,0 +1,11 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvTitle">
+<p>Error</p>
+</div>
+<div id="dvClients">
+    {{ info.Name }}{{ info.Version }}
+	<p /><b>Error</b>:
+	<br/><i>{{error_msg}}</i>
+</div>
+{% endblock %}
