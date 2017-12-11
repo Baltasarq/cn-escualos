@@ -2,8 +2,9 @@
   <library name="Google App Engine SDK" type="python">
     <CLASSES>
       <root url="file://$USER_HOME$/bin/gae-sdk" />
-      <root url="file://$USER_HOME$/bin/gae-sdk/lib/six" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/google-api-python-client" />
+      <root url="file://$USER_HOME$/bin/gae-sdk/lib/flask-0.12" />
+      <root url="file://$USER_HOME$/bin/gae-sdk/lib/six-1.9.0" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/endpoints-1.0" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/websocket" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/pyasn1" />
@@ -29,6 +30,7 @@
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/mox" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/simplejson" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/fancy_urllib" />
+      <root url="file://$USER_HOME$/bin/gae-sdk/lib/click-6.6" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/ipaddr" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/protorpc-1.0" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/python-gflags" />
@@ -42,7 +44,8 @@
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/werkzeug-0.11.10" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/antlr3" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/rsa" />
-      <root url="file://$USER_HOME$/bin/gae-sdk/lib/django-1.9" />
+      <root url="file://$USER_HOME$/bin/gae-sdk/lib/itsdangerous-0.24" />
+      <root url="file://$USER_HOME$/bin/gae-sdk/lib/django-1.11" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/webapp2-2.5.2" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/webob-1.2.3" />
       <root url="file://$USER_HOME$/bin/gae-sdk/lib/yaml-3.10" />
