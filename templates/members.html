@@ -8,6 +8,10 @@
             <td width="20%">
             {% if member.photo %}
                 <img src="data:image/png;base64,{{member.photo.encode('base64')}}">
+            {% else %}
+                <img src="res/unknown_member.svg"
+                     height="64" width="64"
+                     style="background-color: black">
             {% endif %}
             </td>
             <td width="80%" id="tblItems">
