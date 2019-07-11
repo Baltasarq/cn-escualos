@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-# MIT License
-# (c) baltasar 2016
+# (c) CNEscualos baltasar 2016/19 MIT License <baltasarq@gmail.com>
 
 from google.appengine.ext import ndb
 
@@ -10,3 +9,4 @@ class News(ndb.Model):
     title = ndb.StringProperty(required=True)
     url = ndb.StringProperty()
     body = ndb.StringProperty()
+    photo_id = ndb.IntegerProperty()

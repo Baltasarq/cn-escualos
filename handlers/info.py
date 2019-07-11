@@ -10,7 +10,7 @@ from model.appinfo import AppInfo
 from model.member import Member
 
 
-class ErrorHandler(webapp2.RequestHandler):
+class InfoHandler(webapp2.RequestHandler):
     def get(self):
         # Retrieve message
         try:
@@ -24,19 +24,19 @@ class ErrorHandler(webapp2.RequestHandler):
         # Render
         try:
             template_values = {
-                "kind": "Error",
+                "kind": "Info",
                 "usr": Member.current(),
                 "msg": msg,
                 "info": AppInfo
             }
 
             jinja = jinja2.get_jinja2(app=self.app)
-            self.response.write(jinja.render_template("error.html", **template_values));
+            self.response.write(jinja.render_template("error.html", **template_values))
         except Exception as e:
             logging.error(str(e))
             self.response.write("ERROR: " + str(e))
 
 
 app = webapp2.WSGIApplication([
-    ("/error", ErrorHandler),
+    ("/info", InfoHandler),
 ], debug=True)

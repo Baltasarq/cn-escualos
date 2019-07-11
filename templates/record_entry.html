@@ -1,0 +1,18 @@
+<td>
+    <a href="/members/records/delete?id={{ record_entry_index }}">
+        <img style="background-color: orangered" alt="Eliminar" Title="Eliminar" width="16" height="16" src="/res/delete.svg">
+    </a>
+</td>
+<td>
+    {{ record_entry.added }}
+</td>
+<td width="20%">
+    {{ record_entry.where }}
+</td>
+<td style="text-align: right; font-family: monospace"><b>
+    {{ "%5d" | format(record_entry.distance) }}m
+</b></td>
+<td>{{ SwimStyles.name_from_id(record_entry.style_id) }}</td>
+<td style="text-align: center; font-family: monospace">
+    {{ "%02dh %02d' %02d\" %03dms" | format(record_hours, record_minutes, record_seconds, record_millis) }}
+</td>

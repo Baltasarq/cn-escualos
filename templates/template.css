@@ -80,6 +80,10 @@ input.button {
     max-height: 400px
 }
 
+.clsInputTime {
+    width: 3em;
+}
+
 /* Hyperlinks */
 a {
 	color: blue;

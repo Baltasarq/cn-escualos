@@ -1,0 +1,269 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<script>
+    function hideErrorReporting()
+    {
+        const dvError = document.getElementById( "dvError" );
+
+        dvError.style.display = "none";
+    }
+
+    function showErrorMsg(msg)
+    {
+        const dvError = document.getElementById( "dvError" );
+
+        dvError.style.display = "block";
+        dvError.style.backgroundColor = "red";
+        dvError.style.color = "white";
+        dvError.innerHTML = "<b>" + msg + "</b>"
+    }
+
+    function chk_member_data()
+    {
+        const edDNI = document.getElementById( "edDNI" );
+        const edSurname = document.getElementById( "edSurname" );
+        const edName = document.getElementById( "edName" );
+        const edBirth = document.getElementById( "edBirth" );
+        const edSoc = document.getElementById( "edSoc" );
+        const edLicense = document.getElementById( "edLicense" );
+        let toret = true;
+
+        hideErrorReporting();
+
+        if ( edDNI.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un DNI" );
+            toret = false;
+        }
+
+        if ( edSurname.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un apellido" );
+            toret = false;
+        }
+
+        if ( edName.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un nombre" );
+            toret = false;
+        }
+
+        if ( edSoc.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un número de socio" );
+            toret = false;
+        } else {
+            const soc = parseInt( edSoc.value );
+
+            if ( isNaN( soc )
+              || soc < 0 )
+            {
+                showErrorMsg( "Número de socio inválido" );
+                toret = false;
+            }
+        }
+
+        if ( edLicense.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un número de licencia" );
+            toret = false;
+        } else {
+            const lic = parseInt( edLicense.value );
+
+            if ( isNaN( lic )
+              || lic < 0 )
+            {
+                showErrorMsg( "Número de licencia inválido" );
+                toret = false;
+            }
+        }
+
+        if ( edBirth.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un año de nacimiento" );
+            toret = false;
+        } else {
+            const birth_parts = edBirth.value.trim().split( "-" ).map( x => parseInt( x, 10 ) );
+
+            for(let i = 0; i < birth_parts.length; ++i) {
+                if ( isNaN( birth_parts[ i ] ) ) {
+                    showErrorMsg( "Fecha de nacimiento inválida" );
+                    toret = false;
+                }
+            }
+
+            if ( birth_parts[ 0 ] < 1900
+              || birth_parts[ 1 ] > 12
+              || birth_parts[ 2 ] > 31 )
+            {
+                showErrorMsg( "Fecha de nacimiento imposible: " + edBirth.value );
+                toret = false;
+            }
+        }
+
+        return toret;
+    }
+
+    function chk_record_data()
+    {
+        const edDistance = document.getElementById( "edDistance" );
+        const edHours = document.getElementById( "edHours" );
+        const edMinutes = document.getElementById( "edMinutes" );
+        const edSeconds = document.getElementById( "edSeconds" );
+        let toret = true;
+
+        hideErrorReporting();
+
+        if ( edDistance.value < 25 ) {
+            showErrorMsg( "La distancia no puede ser menor que 25m" );
+            toret = false;
+        }
+
+        const hours = parseInt( edHours.value );
+        const minutes = parseInt( edMinutes.value );
+        const seconds = parseInt( edSeconds.value );
+        const totalSeconds = ( hours * 3600 ) + ( minutes * 60 ) + seconds;
+
+        if ( hours < 0
+          || minutes < 0
+          || seconds < 0
+          || isNaN( totalSeconds )
+          || totalSeconds < 10 )
+        {
+            showErrorMsg( "Crono imposible: " + totalSeconds + '"' );
+            toret = false;
+        }
+
+        return toret;
+    }
+</script>
+<div id="dvTitle"><b>Member</b></div>
+    <div id="dvError" style="display: none"></div>
+    {% if usr %}
+    <div id="dvItems">
+        <div id="tblItems">
+            <h1>{{ usr.surname }}, {{ usr.name }}</h1>
+            <h2>Datos básicos</h2>
+            <div id="dvFormMember">
+            <form id="frmMember"
+                  method="post" action="/members/modify"
+                  enctype="multipart/form-data"
+                  onsubmit="return chk_member_data()">
+                <table border="0" width="100%">
+                <tr>
+                    <td style="padding-bottom: 15pt">
+                        <label for="edPhoto">Nueva foto: </label>
+                        <input type="file" name="edPhoto" id="edPhoto" accept="image/*" />
+                        <br/>
+                        <i>(será reescalada a 64x64)</i>
+                    </td>
+                    <td style="text-align: center; padding-bottom: 15pt">
+                        {% if usr.photo %}
+                            <img class="clsPhoto" height="64" width="64" alt="{{ usr.name }}"
+                                 src="data:image/png;base64,{{usr.photo.encode('base64')}}" />
+                        {% else %}
+                            <img class="clsPhoto" height="64" width="64" alt="No hay foto"
+                                 src="/res/unknown_member.svg"
+                                 style="background-color: black"/>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="edDNI">DNI: </label>
+                        <input required="required" type="text" id="edDNI" name="edDNI" value="{{ usr.dni }}">
+                    </td>
+                    <td>
+                        <label for="edBirth">Fecha de nacimiento: </label>
+                        <input type="date" id="edBirth" name="edBirth" value="{{ usr.birth }}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="edSurname">Apellidos: </label>
+                        <input required="required" type="text" id="edSurname" name="edSurname" value="{{ usr.surname }}">
+                    </td>
+                    <td>
+                        <label for="edName">Nombre: </label>
+                        <input required="required" type="text" id="edName" name="edName" value="{{ usr.name }}">
+                    </td>
+                </tr>
+                <tr>
+                    {% if usr.is_admin %}
+                    <td>
+                        <label for="edActive">Activo: </label>
+                        <select id="edActive" name="edActive">
+                            <option value="yes" {% if usr.active %} selected {% endif %}>Yes</option>
+                            <option value="no" {% if not usr.active %} selected {% endif %}>No</option>
+                        </select>
+                    </td>
+                    {% endif %}
+                    <td>
+                        <label for="edLic">Número de licencia: </label>
+                        <input type="number" id="edLic" name="edLic" value="{{ usr.lic }}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="edComments"><i>Motto</i>: </label>
+                    </td>
+                    <td>
+                        <textarea id="edComments" name="edComments"
+                                rows="5" cols="50">{{ usr.comments }}</textarea>
+                    </td>
+                </tr>
+                </table>
+                <input type="submit" value="Guardar" id="btSend" />
+            </form>
+            </div>
+            <div id="dvNewRecord">
+                <h2>Nueva marca</h2>
+                <form id="frmRecords"
+                      action="/members/records/add" method="post"
+                      onsubmit="javascript: return chk_record_data()">
+                    <p>
+                    <label for="edDistance">Distancia:</label>
+                    <input id="edDistance" name="edDistance" type="number" step="25" min="25" required="required">m
+                    <label for="edStyle">Estilo:</label>
+                     <select id="edStyle" name="edStyle">
+                         {% for value in SwimStyles.VALUES %}
+                            <option value="{{ SwimStyles.abbrev_from_value(value) }}">
+                                {{ SwimStyles.name_from_value(value) | capitalize }}
+                            </option>
+                         {% endfor %}
+                     </select>
+                    <br/>
+                    <label for="edWhere">Competici&oacute;n: </label>
+                    <input type="text" id="edWhere" name="edWhere" />
+                    <br/>Tiempo:
+                    <input type="number" class="clsInputTime" placeholder="0" id="edHours" name="edHours" value="0" min="0">
+                    <label for="edHours">h </label>
+                    <input type="number" class="clsInputTime" placeholder="0" id="edMinutes" name="edMinutes" value="0" min="0" max="59">
+                    <label for="edMinutes">' </label>
+                    <input type="number" class="clsInputTime" required="required" placeholder="0" id="edSeconds" name="edSeconds" value="0" min="0" max="59">
+                    <label for="edSeconds">"</label>
+                    <input type="number" class="clsInputTime" placeholder="0" id="edMillis" name="edMillis" value="0" min="0" max="999">
+                    <label for="edMillis">ms</label>
+                    </p>
+                    <input type="submit" id="btSubmit" value="Registrar nueva marca"/>
+                </form>
+            </div>
+            <div id="dvRecordList">
+                <h2>Marcas registradas</h2>
+                    {% if usr.records %}
+                        <table width="100%">
+                        {% for record_entry in usr.records %}
+                            {% set record_hours = record_entry.milliseconds // 3600000 %}
+                            {% set record_minutes = (record_entry.milliseconds - (record_hours * 3600000)) // 60000 %}
+                            {% set record_seconds = (record_entry.milliseconds - (record_hours * 3600000) - (record_minutes * 60000)) // 1000 %}
+                            {% set record_millis = (record_entry.milliseconds - (record_hours * 3600000) - (record_minutes * 60000) - (record_seconds * 1000)) %}
+                        <tr>
+                            {% set record_entry_index = loop.index %}
+                            {% include "record_entry.html" %}
+                        </tr>
+                        {% endfor %}
+                        </table>
+                    {% else %}
+                        No hay marcas registradas.
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+        Internal ERROR: no member data found.
+    {% endif %}
+{% endblock %}

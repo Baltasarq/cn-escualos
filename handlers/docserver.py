@@ -3,13 +3,10 @@
 # (c) baltasar 2016
 
 import webapp2
-from webapp2_extras import jinja2
 from google.appengine.ext import ndb
 
-from model.document import Document
 
-
-class PhotosHandler(webapp2.RequestHandler):
+class DocServerHandler(webapp2.RequestHandler):
     def get(self):
         try:
             id = self.request.GET["id"]
@@ -31,5 +28,5 @@ class PhotosHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/docserver', PhotosHandler)
+    ('/docserver', DocServerHandler)
 ], debug=True)

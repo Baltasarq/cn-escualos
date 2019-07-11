@@ -1,11 +1,19 @@
 {% extends "skeleton.html" %}
 {% block content %}
 <div id="dvTitle">
-<p>Error</p>
+<p>{{ kind }}</p>
 </div>
-<div id="dvClients">
+<div id="dvItems">
     {{ info.Name }}{{ info.Version }}
-	<p /><b>Error</b>:
-	<br/><i>{{error_msg}}</i>
+
+	<p>
+	<b>{{ kind }}</b>:
+	<br/><i>{{ msg }}</i>
+	</p>
+	<p>
+	<a href="/">
+		<img class="styled-button" alt="Home" width="48" height="48" src="/res/back.svg"/>
+	</a>
+	</p>
 </div>
 {% endblock %}

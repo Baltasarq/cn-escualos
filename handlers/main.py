@@ -4,18 +4,29 @@
 
 import webapp2
 from webapp2_extras import jinja2
+from webapp2_extras import users
 
 from model.appinfo import AppInfo
 from model.news import News
+from model.member import Member
+from model.patreon import Patreon
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        login_url = "/"
+        usr = Member.current()
         news = News.query().order(-News.added).fetch(limit=3)
+
+        if not usr:
+            login_url = users.users.create_login_url("/ensure_login")
 
         template_values = {
             "info": AppInfo,
             "news": news,
+            "usr": usr,
+            "login_url": login_url,
+            "patreons": Patreon.query()
         }
 
         jinja = jinja2.get_jinja2(app=self.app)

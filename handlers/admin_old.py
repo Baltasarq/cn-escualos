@@ -1,13 +1,11 @@
 #!/usr/bin/env python
-# MIT License
-# (c) baltasar 2016
+# (c) Baltasar 2016-19 MIT License <baltasarq@gmail.com>
 
 
 import time
+import logging
 import datetime
 import webapp2
-from google.appengine.api import users
-from google.appengine.ext import ndb
 from google.appengine.api import images
 from webapp2_extras import jinja2
 
@@ -21,9 +19,21 @@ from model.document import Document
 
 class AdminHandler(webapp2.RequestHandler):
     def get(self):
-        jinja = jinja2.get_jinja2(app=self.app)
-        template_values = { "info": AppInfo }
-        self.response.write(jinja.render_template("admin.html", **template_values))
+        # Get user
+        usr = Member.current()
+
+        if not usr:
+            return Member.show_error_unrecognized_usr(self)
+
+        # Render
+        try:
+            jinja = jinja2.get_jinja2(app=self.app)
+            template_values = { "usr": usr, "info": AppInfo }
+            self.response.write(jinja.render_template("admin.html", **template_values))
+        except Exception as e:
+            logging.error(str(e))
+            self.response.write("ERROR: " + str(e))
+        return
 
     def post(self):
         op_trial = self.request.get("edOpTrial")
@@ -65,6 +75,10 @@ class AdminHandler(webapp2.RequestHandler):
 
                 if op_member == "add":
                     member = Member()
+                    member.active = member_active
+                    member.identified = False
+                    member.is_admin = False
+                    member.user_id = ""
                 else:
                     member = Member.query(Member.dni == member_dni).get()
                     if not member:
@@ -79,8 +93,8 @@ class AdminHandler(webapp2.RequestHandler):
                 if member_name: member.name = member_name
                 if member_surname: member.surname = member_surname
                 if member_comments: member.comments = member_comments
-                member.active = member_active
                 if member_photo: member.photo = images.resize(member_photo, 64, 64)
+
                 member.put()
                 time.sleep(1)
             elif op_member == "delete":

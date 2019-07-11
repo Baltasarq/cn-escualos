@@ -23,8 +23,24 @@ handlers:
 - url: /
   script: handlers.main.app
 
+- url: /ensure_login
+  script: handlers.ensure_login.app
+  login: required
+
+- url: /members/modify
+  script: handlers.members.modify.app
+  login: required
+
+- url: /members/records/add
+  script: handlers.members.records.add.app
+  login: required
+
+- url: /members/records/delete
+  script: handlers.members.records.delete.app
+  login: required
+
 - url: /members
-  script: handlers.members.app
+  script: handlers.member_list.app
 
 - url: /trials
   script: handlers.trials.app
@@ -44,8 +60,19 @@ handlers:
 - url: /error
   script: handlers.error.app
 
+- url: /info
+  script: handlers.info.app
+
 - url: /admin
-  script: handlers.admin.app
+  script: handlers.admin_old.app
+  login: admin
+
+- url: /admin/patreons
+  script: handlers.admin.patreons.app
+  login: admin
+
+- url: /admin/patreon/delete
+  script: handlers.admin.patreon.delete.app
   login: admin
 
 - url: .*

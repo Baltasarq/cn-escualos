@@ -1,29 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="template.css">
+	<link rel="stylesheet" href="/template.css">
 	<title>{{ info.Name }}</title>
 </head>
 <body>
 <div id="dvHeader">
-    <table width="100%">
+    <table width="100%" style="margin: 10px">
         <tr>
-            <td width="60%"><img height="64px" width="64px" src="/res/escualos.png"></td>
-            <td width="40%">
-                <h1>{{ info.Title }}</h1>
+            <td width="5%"><img alt="CN Escualos" height="64px" width="64px" src="/res/escualos.png"></td>
+            <td width="20%" style="text-align: center">
+            {% if usr %}
+                <a href="/members/modify">
+                    {% if usr.photo %}
+                        <img alt="{{ usr.name }} foto" height="64" width="64" src="data:image/png;base64,{{usr.photo.encode('base64')}}">
+                        <br />
+                    {% endif %}
+                    {{ usr.name }}
+                </a>
+            {% else %}
+                <a href="{{ login_url }}">
+                    <img alt="usr" height="64" width="64" src="/res/member.svg" >
+                    <br />login
+                </a>
+            {% endif %}
             </td>
+            <td width="70%" style="text-align: center"><h1>{{ info.Title }}</h1></td>
+            {% if usr.is_admin %}
+                <td width="5%" style="text-align: left">
+                    <a href="/admin">
+                        <img style="background-color: orangered" height="32" width="32" src="/res/work.svg">
+                    </a>
+                </td>
+            {% endif %}
         </tr>
     </table>
 </div>
 <div id="dvContainer">
     <div id="dvActions" class="clsMenu">
-        <a href="/"><img height="48px" width="48px" title="principal" class="styled-button" src="/res/home.svg"/></a>
-        <br/><a href="/news"><img height="48px" width="48px" title="noticias" class="styled-button" src="/res/news.svg"/></a>
-        <br/><a href="/members"><img height="48px" width="48px" title="miembros" class="styled-button" src="/res/member.svg"/></a>
-        <br/><a href="/trials"><img height="48px" width="48px" title="pruebas" class="styled-button" src="/res/competitions.svg"/></a>
-        <br/><a href="/photos"><img height="48px" width="48px" title="fotos" class="styled-button" src="/res/photo.svg"/></a>
-        <br/><a href="/docs"><img height="48px" width="48px" title="docs" class="styled-button" src="/res/document.svg"/></a>
+        <a href="/"><img alt="Inicio" eight="48px" width="48px" title="principal" class="styled-button" src="/res/home.svg"/></a>
+        <br/><a href="/news"><img alt="Noticias" height="48px" width="48px" title="noticias" class="styled-button" src="/res/news.svg"/></a>
+        <br/><a href="/members"><img alt="Miembros" height="48px" width="48px" title="miembros" class="styled-button" src="/res/member.svg"/></a>
+        <br/><a href="/trials"><img alt="Pruebas" height="48px" width="48px" title="pruebas" class="styled-button" src="/res/competitions.svg"/></a>
+        <br/><a href="/photos"><img alt="Fotos" height="48px" width="48px" title="fotos" class="styled-button" src="/res/photo.svg"/></a>
+        <br/><a href="/docs"><img alt="Docs" height="48px" width="48px" title="docs" class="styled-button" src="/res/document.svg"/></a>
         <br/><a target="_blank" href="http://fb.com/clubnatacionescualos/"><img height="48px" width="48px" title="facebook" class="styled-button" src="/res/facebook.svg"/></a>
         <br/><a target="_blank" href="mailto:cnescualos@gmail.com"><img height="48px" width="48px" title="cnescualos@gmail.com" class="styled-button" src="/res/email.svg"/></a>
         <br/>
