@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170b234-0101-4c18-8245-a36b7783013b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/handlers/admin/members.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/kernel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/member/record/show_all.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/modify.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/kernel.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/kernel_members.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/records.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cnescualos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cnescualos.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/admin_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin_old.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/ensure_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/ensure_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/member_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/members.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/members/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/members/modify.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/members/records/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/members/records/add.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/members/records/delete.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/appinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/appinfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/member.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/member.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/record_entry.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/record_entry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_old.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/record_entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/record_entry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/template.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -231,7 +204,7 @@
       <workItem from="1562746824466" duration="2909000" />
       <workItem from="1562835593577" duration="16916000" />
       <workItem from="1566300053174" duration="4206000" />
-      <workItem from="1566466443969" duration="9395000" />
+      <workItem from="1566466443969" duration="10173000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>
