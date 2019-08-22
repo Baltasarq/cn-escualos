@@ -14,8 +14,9 @@
 <div id="dvAdminLinks">
     <a href="/admin/patreons">Patreons</a>
 </div>
+<hr>
 <div id="dvManagement">
-    <form id="frmCfg" method="post" action="/admin" enctype="multipart/form-data">
+    <form id="frmCfg" method="post" action="/admin_old" enctype="multipart/form-data">
         <b><label for="edDni">DNI</label></b> <input type="text" placeholder="dni" name="edDni" id="edDni">
         <label for="edLic">License</label> <input type="text" placeholder="license" name="edLic" id="edLic">
         <label for="edSoc">Membership #</label> <input type="text" placeholder="membership #" name="edSoc" id="edSoc">
@@ -31,13 +32,16 @@
         <br>
         <label for="edPhoto">Upload photo file (will be scaled to 64x64)</label> <input type="file" name="edPhoto" id="edPhoto" />
         <br/>
+        <label for="edFileImport">Records CSV file for importing</label><input type="file" name="edFileImport" id="edFileImport" />
+        <br/>
         <select id="edOpMember" name="edOpMember">
             <option value="nop">Nop</option>
             <option value="add">Add</option>
             <option value="modify">Modify</option>
             <option value="delete">Delete</option>
             <option value="list">List</option>
-        </select><input type="submit" value="Add, delete or modify member; list members">
+            <option value="import_records">Import records</option>
+        </select><input type="submit" value="Add, delete or modify member; list members; import records">
         <p></p>
         <hr>
         <b><label for="edDate">Date</label></b> <input type="date" placeholder="date" name="edDate" id="edDate">

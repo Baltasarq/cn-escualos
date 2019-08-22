@@ -1,0 +1,41 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvTitle"><b>Marcas</b></div>
+<div id="dvItems">
+    <table width="100%">
+    {% for distance in distances %}
+        {% set records = records_per_distance[distance] %}
+
+        {% if records %}
+            <tr width="100%">
+                <td colspan="4"><br/><b>{{ distance }}m</b></td>
+            </tr>
+
+            {% for record in records %}
+                <tr width="100%">
+                    <td width="10%">
+                        {{ record.added }}
+                    </td>
+                    <td width="30%">
+                        {{ record.surname + ", " + record.name }}
+                    </td>
+                    <td width="10%">
+                        {{ record.style }}
+                    </td>
+                    <td width="40%" id="tblItems" align="right">
+                        {{ record.str_from_milliseconds() }}
+                    </td>
+                    <td width="10%">
+                        {{ record.where }}
+                    </td>
+                </tr>
+            {% else %}
+                No hay marcas registradas.
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        No hay marcas registradas.
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}

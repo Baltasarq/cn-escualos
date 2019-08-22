@@ -59,3 +59,51 @@ class RecordEntry(ndb.Model):
     distance = ndb.IntegerProperty(required=True, indexed=True)
     where = ndb.StringProperty()
     milliseconds = ndb.IntegerProperty(required=True, indexed=True)
+
+    @staticmethod
+    def total_seconds(millis):
+        return millis // 1000
+
+    @staticmethod
+    def part_millis(millis):
+        return millis % 1000
+
+    @staticmethod
+    def part_seconds(millis):
+        toret = RecordEntry.total_seconds(millis)
+
+        # Remove hours
+        toret %= 3600
+
+        # Remove minutes
+        toret %= 60
+
+        return toret
+
+    @staticmethod
+    def part_minutes(millis):
+        toret = RecordEntry.total_seconds(millis)
+
+        # Remove hours
+        toret %= 3600
+
+        # Remove minutes
+        return toret // 60
+
+    @staticmethod
+    def part_hours(millis):
+        toret = RecordEntry.total_seconds(millis)
+
+        # Remove hours
+        return toret // 3600
+
+    @staticmethod
+    def str_from_milliseconds(millis):
+        return str.format("{0:02d}h {1:02d}' {2:02d}\" {3:02d}ms",
+                               RecordEntry.part_hours(millis),
+                               RecordEntry.part_minutes(millis),
+                               RecordEntry.part_seconds(millis),
+                               RecordEntry.part_millis(millis))
+
+    def __str__(self):
+        return RecordEntry.str_from_milliseconds(self.milliseconds)

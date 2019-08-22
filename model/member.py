@@ -2,12 +2,16 @@
 # CNEscualos (c) baltasar 2016/19 MIT License <baltasarq@gmail.com>
 
 
-import datetime
+import time
+import logging
 from datetime import date
+from datetime import datetime
+
 from google.appengine.ext import ndb
 from google.appengine.api import users
+from google.appengine.api import images
 
-
+import handlers.general_tools as gentools
 from model.record_entry import RecordEntry
 
 
@@ -53,7 +57,7 @@ class Member(ndb.Model):
         if users.is_current_user_admin():
             if not toret:
                 toret = Member()
-                toret.birth = datetime.datetime.now()
+                toret.birth = datetime.now()
                 toret.dni = "0A"
                 toret.lic = 0
                 toret.soc = 0
@@ -84,3 +88,34 @@ class Member(ndb.Model):
 
         handler.redirect("/error?msg=Unrecognized user: " + usr_name)
         return
+
+    @staticmethod
+    def assign_data(member, request):
+        # Retrieve data
+        member_dni = request.get("edDNI", "")
+        member_birth = request.get("edBirth", "2000-01-01")
+        member_surname = request.get("edSurname", "")
+        member_name = request.get("edName", "")
+        member_lic = gentools.int_from_str(request.get("edLic", "-1"))
+        member_soc = gentools.int_from_str(request.get("edSoc", "-1"))
+        member_comments = request.get("edComments", "")
+        member_photo = request.get("edPhoto", None)
+        member_active = request.get("edActive", "no")
+
+        # Store
+        try:
+            if member_photo: member.photo = images.resize(member_photo, 64, 64)
+        except images.Error as e:
+            logging.error("Member photo was not added: " + type(e).__name__ + ' ' + str(e))
+
+        if member_dni: member.dni = member_dni
+        if member_birth: member.birth = datetime.strptime(member_birth, "%Y-%m-%d")
+        if member_lic >= 0: member.lic = member_lic
+        if member_soc >= 0: member.lic = member_lic
+        if member_name: member.name = member_name
+        if member_surname: member.surname = member_surname
+        if member_comments: member.comments = member_comments
+
+        member.active = member_active.strip() == "yes"
+        member.put()
+        time.sleep(1)

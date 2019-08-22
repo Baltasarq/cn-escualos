@@ -12,7 +12,7 @@
             <td width="5%"><img alt="CN Escualos" height="64px" width="64px" src="/res/escualos.png"></td>
             <td width="20%" style="text-align: center">
             {% if usr %}
-                <a href="/members/modify">
+                <a href="/member/modify">
                     {% if usr.photo %}
                         <img alt="{{ usr.name }} foto" height="64" width="64" src="data:image/png;base64,{{usr.photo.encode('base64')}}">
                         <br />
@@ -29,17 +29,21 @@
             <td width="70%" style="text-align: center"><h1>{{ info.Title }}</h1></td>
             {% if usr.is_admin %}
                 <td width="5%" style="text-align: left">
-                    <a href="/admin">
+                    <a href="/kernel">
                         <img style="background-color: orangered" height="32" width="32" src="/res/work.svg">
                     </a>
                 </td>
             {% endif %}
         </tr>
     </table>
+    <p align="right">
+        <a target="_blank" href="{{ info.CalendarURL }}"><b>Actividades</b></a>
+        <a href="/member/record/show_all"><b>Marcas</b></a>
+    </p>
 </div>
 <div id="dvContainer">
     <div id="dvActions" class="clsMenu">
-        <a href="/"><img alt="Inicio" eight="48px" width="48px" title="principal" class="styled-button" src="/res/home.svg"/></a>
+        <a href="/"><img alt="Inicio" height="48px" width="48px" title="principal" class="styled-button" src="/res/home.svg"/></a>
         <br/><a href="/news"><img alt="Noticias" height="48px" width="48px" title="noticias" class="styled-button" src="/res/news.svg"/></a>
         <br/><a href="/members"><img alt="Miembros" height="48px" width="48px" title="miembros" class="styled-button" src="/res/member.svg"/></a>
         <br/><a href="/trials"><img alt="Pruebas" height="48px" width="48px" title="pruebas" class="styled-button" src="/res/competitions.svg"/></a>

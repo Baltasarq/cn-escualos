@@ -27,7 +27,7 @@ class EnsureLoginHandler(webapp2.RequestHandler):
             if usr.identified:
                 gae_usr = users.get_current_user()
                 self.response.write(gae_usr.nickname() + " already identified, redirecting to personal page.")
-                self.redirect("/members/modify")
+                self.redirect("/member/modify")
                 return
             else:
                 data = {

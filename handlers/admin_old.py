@@ -15,6 +15,7 @@ from model.trial import Trial
 from model.news import News
 from model.photo import Photo
 from model.document import Document
+from handlers.member.record.importing import import_records_csv_file
 
 
 class AdminHandler(webapp2.RequestHandler):
@@ -28,8 +29,8 @@ class AdminHandler(webapp2.RequestHandler):
         # Render
         try:
             jinja = jinja2.get_jinja2(app=self.app)
-            template_values = { "usr": usr, "info": AppInfo }
-            self.response.write(jinja.render_template("admin.html", **template_values))
+            template_values = {"usr": usr, "info": AppInfo}
+            self.response.write(jinja.render_template("admin_old.html", **template_values))
         except Exception as e:
             logging.error(str(e))
             self.response.write("ERROR: " + str(e))
@@ -47,7 +48,13 @@ class AdminHandler(webapp2.RequestHandler):
             member_dni = self.request.get("edDni")
 
             # Doit
-            if op_member == "list":
+            if op_member == "import_records":
+                csv_records_contents = self.request.get("edFileImport")
+                result_summary = import_records_csv_file(csv_records_contents)
+                print("Summary: " + result_summary)
+
+                return self.redirect("/error?msg=" + result_summary.replace('\n', ' '))
+            elif op_member == "list":
                 template_values = {"members": Member.query()}
                 jinja = jinja2.get_jinja2(app=self.app)
                 self.response.headers['Content-Type'] = "text/csv"
@@ -223,10 +230,10 @@ class AdminHandler(webapp2.RequestHandler):
                 self.redirect("/error?msg=operation on document not supported")
                 return
 
-        self.redirect("/admin")
+        self.redirect("/admin_old")
         return
 
 
 app = webapp2.WSGIApplication([
-    ("/admin", AdminHandler),
+    ("/admin_old", AdminHandler),
 ], debug=True)

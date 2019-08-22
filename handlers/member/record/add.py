@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # CNEscualos (c) Baltasar 2016-19 MIT License <baltasarq@gmail.com>
-# Add records
+# Add record
 
 
 import logging
@@ -22,7 +22,7 @@ class AddRecordHandler(webapp2.RequestHandler):
             # Render ack
             if usr:
                 # Retrieve record data
-                where = self.request.get("edWhere", "")
+                where = self.request.get("edWhere", "").strip().lower().capitalize()
                 distance = tools.int_from_str(self.request.get("edDistance", "0"))
                 hours = tools.int_from_str(self.request.get("edHours", "0"))
                 minutes = tools.int_from_str(self.request.get("edMinutes", "0"))
@@ -39,7 +39,7 @@ class AddRecordHandler(webapp2.RequestHandler):
                 usr.records.append(rcrd)
                 usr.put()
                 time.sleep(1)
-                return self.redirect("/members/modify")
+                return self.redirect("/member/modify")
             else:
                 return Member.show_error_unrecognized_usr(self)
         except Exception as e:
@@ -48,5 +48,5 @@ class AddRecordHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/members/records/add', AddRecordHandler)
+    ('/member/record/add', AddRecordHandler)
 ], debug=True)

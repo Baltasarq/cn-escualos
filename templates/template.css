@@ -84,6 +84,13 @@ input.button {
     width: 3em;
 }
 
+.clsTitle {
+  padding: 5px;
+  background-color: gray;
+  color: white;
+  font-size: 14pt
+}
+
 /* Hyperlinks */
 a {
 	color: blue;
