@@ -24,7 +24,7 @@ class Member(ndb.Model):
     active = ndb.BooleanProperty(required=True, indexed=True, default=False)
     surname = ndb.StringProperty(required=True, indexed=True)
     name = ndb.StringProperty(required=True)
-    user_id = ndb.StringProperty(required=True, indexed=True)       # Google user id: usr.user_id()
+    user_id = ndb.StringProperty(default=None, indexed=True)        # Google user id: usr.user_id()
     identified = ndb.BooleanProperty(required=True, default=False)  # True if already identified
     is_admin = ndb.BooleanProperty(required=True, default=False)    # Is it admin?
     records = ndb.StructuredProperty(RecordEntry, repeated=True)

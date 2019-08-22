@@ -36,7 +36,7 @@ def import_records_csv_file(file_contents):
         style_id = SwimStyles.id_from_abbrev(data[2].strip().lower())
         millis = int(data[3])
         distance = int(data[1])
-        where = data[4] if len(data) >= 3 else ""
+        where = data[4] if len(data) > 4 else ""
 
         # Store data
         record_entry = RecordEntry(
@@ -45,6 +45,10 @@ def import_records_csv_file(file_contents):
                             milliseconds=millis,
                             where=where)
         m.records.append(record_entry)
+
+        if not m.user_id:
+            m.user_id = None
+
         m.put()
 
     summary += "\nProcessed " + str(i) + " row(s)."

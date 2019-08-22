@@ -99,7 +99,7 @@ class RecordEntry(ndb.Model):
 
     @staticmethod
     def str_from_milliseconds(millis):
-        return str.format("{0:02d}h {1:02d}' {2:02d}\" {3:02d}ms",
+        return str.format("{0:02d}h {1:02d}' {2:02d}\" {3:03d}ms",
                                RecordEntry.part_hours(millis),
                                RecordEntry.part_minutes(millis),
                                RecordEntry.part_seconds(millis),
