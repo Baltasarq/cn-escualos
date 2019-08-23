@@ -4,37 +4,44 @@
 <div id="dvItems">
     <table width="100%">
     {% for distance in distances %}
-        {% set records = records_per_distance[distance] %}
+        {% set records_per_style = records_per_distance_and_style[distance] %}
 
-        {% if records %}
+        {% if records_per_style %}
             <tr width="100%">
-                <td colspan="4"><br/><b>{{ distance }}m</b></td>
+                <td colspan="4"><b>{{ distance }}m</b></td>
             </tr>
+            {% for style in styles %}
+                {% set records = records_per_style[style] %}
 
-            {% for record in records %}
-                <tr width="100%">
-                    <td width="10%">
-                        {{ record.added }}
-                    </td>
-                    <td width="30%">
-                        {{ record.surname + ", " + record.name }}
-                    </td>
-                    <td width="10%">
-                        {{ record.style }}
-                    </td>
-                    <td width="40%" id="tblItems" align="right">
-                        {{ record.str_from_milliseconds() }}
-                    </td>
-                    <td width="10%">
-                        {{ record.where }}
-                    </td>
-                </tr>
-            {% else %}
-                No hay marcas registradas.
+                {% if records %}
+                    <tr width="100%">
+                        <td colspan="4"><i><b>{{ distance }}m</b> {{ style }}</i></td>
+                    </tr>
+
+                    {% for record in records %}
+                        <tr width="100%">
+                            <td width="10%">
+                                {{ record.added }}
+                            </td>
+                            <td width="30%">
+                                {{ record.surname + ", " + record.name }}
+                            </td>
+                            <td width="10%">
+                                {{ record.style }}
+                            </td>
+                            <td width="40%" id="tblItems" align="right">
+                                {{ record.str_from_milliseconds() }}
+                            </td>
+                            <td width="10%">
+                                {{ record.where }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        No hay marcas registradas.
+                    {% endfor %}
+                {% endif %}
             {% endfor %}
         {% endif %}
-    {% else %}
-        No hay marcas registradas.
     {% endfor %}
     </table>
 </div>

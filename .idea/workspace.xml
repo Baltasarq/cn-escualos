@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6170b234-0101-4c18-8245-a36b7783013b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/member/record/importing.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/member/record/importing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/appinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/appinfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/member.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/member.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/record_entry.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/record_entry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/member/record/show_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/member/record/show_all.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/records.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/records.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -208,7 +206,7 @@
       <workItem from="1562746824466" duration="2909000" />
       <workItem from="1562835593577" duration="16916000" />
       <workItem from="1566300053174" duration="4206000" />
-      <workItem from="1566466443969" duration="11579000" />
+      <workItem from="1566466443969" duration="14383000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>
