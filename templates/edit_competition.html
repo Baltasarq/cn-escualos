@@ -1,0 +1,109 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<a href="/competition/management"><img alt="Volver a competiciones" height="24px" width="24px" title="Volver a competiticiones" class="styled-button" src="/res/back.svg"/></a>
+<div class="clsTitle"><b>Competición</b></div>
+<div id="dvEditCompetition">
+<form id="frmCompetition"
+      method="post" action="/competition/modify?id={{ competition.key.urlsafe() }}"
+      enctype="multipart/form-data"
+      onsubmit="return chk_member_data()">
+    <table border="0" width="100%">
+    <tr>
+        <td>
+            <label for="edDate">Fecha: </label>
+            <input required="required" type="date" id="edDate" name="edDate" value="{{ competition.date }}">
+        </td>
+        <td>
+            <label for="edExpirationDate">Fecha fin de inscripciones: </label>
+            <input type="date" id="edExpirationDate" name="edExpirationDate" value="{{ competition.date_inscription_closed }}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="edName">Nombre: </label>
+            <input required="required" type="text" id="edName" name="edName" value="{{ competition.name }}">
+        </td>
+        <td>
+            <label for="edType">Tipo: </label>
+            <input required="required" type="text" id="edType" name="edType" value="{{ competition.type }}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="edWhere">Lugar: </label>
+            <input type="text" id="edWhere" name="edWhere" value="{{ competition.where }}">
+        </td>
+        <td>
+            <label for="edMapPoint">URL Mapa: </label>
+            <input type="text" id="edMapPoint" name="edMapPoint" value="{{ competition.map_position }}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="edComments">Notas: </label>
+        </td>
+        <td>
+            <textarea id="edComments" name="edComments"
+                    rows="5" cols="50">{{ competition.comments }}</textarea>
+        </td>
+    </tr>
+    </table>
+    <input type="submit" value="Guardar" id="btSend" />
+</form>
+</div>
+
+<p/>
+<div class="clsTitle"><b>Nueva prueba</b></div>
+<div id="dvNewTest">
+    <form id="frmTest"
+          method="post" action="/competition/test/add?id={{ competition.key.urlsafe() }}">
+
+        <table border="0" width="100%">
+            <tr>
+                <td>
+                    <label for="edDistance">Distancia: </label>
+                    <input required="required" type="number" id="edDistance" name="edDistance" value="100"
+                            style="text-align: right"/>m.
+                </td>
+                <td>
+                    <select id="edStyle" name="edStyle">
+                         {% for value in SwimStyles.VALUES %}
+                            <option value="{{ SwimStyles.abbrev_from_value(value) }}">
+                                {{ SwimStyles.name_from_value(value) | capitalize }}
+                            </option>
+                         {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <label for="edRelayed">Relevos: </label>
+                    <input type="checkbox" id="edRelayed" name="edRelayed" />
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Añadir"/>
+    </form>
+</div>
+
+<p/>
+<div class="clsTitle"><b>Pruebas</b></div>
+<div id="dvTests">
+    <table width="100%">
+    {% for test in competition.tests %}
+        <tr>
+            <td width="10%">
+                <a href="/competition/test/delete?n={{ loop.index }}">
+                    <img width="16" height="16" alt="Borrar" title="Borrar" src="/res/delete.svg" style="background-color: orangered">
+                </a></td>
+            <td width="40%">{{ test.distance }}m.</td>
+            <td width="40%">{{ test.get_style_name() }}</td>
+            <td width="10%">{{ "relevos" if test.is_relay }}</td>
+        </tr>
+    {% else %}
+        No hay pruebas en esta competición.
+    {% endfor %}
+    </table>
+</div>
+
+
+
+{% endblock %}

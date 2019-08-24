@@ -1,0 +1,26 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div class="clsTitle"><b>Competiciones</b></div>
+<div id="dvItems">
+    <table width="100%">
+    {% for competition in competitions %}
+        <tr width="100%">
+            <td width="10%">
+                <a href="/competition/modify?id={{ competition.key.urlsafe() }}">
+                    <img width="16" height="16" alt="Modificar" title="Modificar" src="/res/modify.svg" style="background-color: orangered">
+                </a>
+                <a href="/competition/delete?id={{ competition.key.urlsafe() }}">
+                    <img width="16" height="16" alt="Borrar" title="Borrar" src="/res/delete.svg" style="background-color: orangered">
+                </a>
+            </td>
+            {% include "competition_entry.html" %}
+        </tr>
+    {% else %}
+        No hay competiciones registradas.
+    {% endfor %}
+    </table>
+</div>
+<div id="dvSpecificActions">
+    <a href="/competition/add"><img alt="Nueva competición" height="24px" width="24px" title="Nueva competición" class="styled-button" src="/res/add.svg"/></a>
+</div>
+{% endblock %}

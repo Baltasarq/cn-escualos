@@ -66,6 +66,26 @@ handlers:
 - url: /info
   script: handlers.info.app
 
+- url: /competition/management
+  script: handlers.competition.management.app
+  login: admin
+
+- url: /competition/add
+  script: handlers.competition.add.app
+  login: admin
+
+- url: /competition/modify
+  script: handlers.competition.modify.app
+  login: admin
+
+- url: /competition/delete
+  script: handlers.competition.delete.app
+  login: admin
+
+- url: /competition/test/add
+  script: handlers.competition.test.add.app
+  login: admin
+
 - url: /kernel
   script: handlers.kernel.app
   login: admin

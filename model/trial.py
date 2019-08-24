@@ -1,8 +1,9 @@
 #!/usr/bin/env python
-# MIT License
-# (c) baltasar 2016
+# (c) CNEscualos Baltasar 2016/19 MIT License <baltasarq@gmail.com>
+
 
 from google.appengine.ext import ndb
+
 
 class Trial(ndb.Model):
     added = ndb.DateProperty(auto_now_add=True)

@@ -93,7 +93,7 @@ class Member(ndb.Model):
     def assign_data(member, request):
         # Retrieve data
         member_dni = request.get("edDNI", "")
-        member_birth = request.get("edBirth", "2000-01-01")
+        member_birth = request.get("edBirth", "2001-01-01")
         member_surname = request.get("edSurname", "")
         member_name = request.get("edName", "")
         member_lic = gentools.int_from_str(request.get("edLic", "-1"))
