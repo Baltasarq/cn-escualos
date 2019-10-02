@@ -1,8 +1,53 @@
 {% extends "skeleton.html" %}
 {% block content %}
+
+<script type="application/javascript">
+    function showError(msg)
+    {
+        const dvError = document.getElementById( "dvError" );
+
+        dvError.innerHTML = "<b>" + msg + "</b>";
+        dvError.style.display = "block";
+    }
+
+    function clearErrors()
+    {
+        const dvError = document.getElementById( "dvError" );
+
+        dvError.style.display = "none";
+        dvError.innerHTML = "";
+    }
+
+    function chkTimes()
+    {
+        let toret = true;
+
+        clearErrors();
+
+        const edHours = document.getElementById( "edHours" );
+        const edMinutes = document.getElementById( "edMinutes" );
+        const edSeconds = document.getElementById( "edSeconds" );
+        const edMillis = document.getElementById( "edMillis" );
+
+        const hours = parseInt( edHours.value );
+        const minutes = parseInt( edMinutes.value );
+        const seconds = parseInt( edSeconds.value );
+        const millis = parseInt( edMillis.value );
+
+        const total_time = (hours * 3600000) + (minutes * 60000) + (seconds * 1000) + millis;
+
+        if ( total_time < 5000 ) {
+            toret = false;
+            showError( "La marca introducida es incorrecta.")
+        }
+
+        return toret;
+    }
+</script>
+
 <a href="/member/open_competitions"><img alt="Volver a competiciones abiertas" height="24px" width="24px" title="Volver a competiticiones abiertas" class="styled-button" src="/res/back.svg"/></a>
 <a href="/member/record/show_all" target="_blank"><img alt="Marcas Escualos" height="24px" width="24px" title="Marcas Escualos" class="styled-button" src="/res/chrono.svg"/> Marcas Escualos</a>
-<a href="https://www.fegan.org/post/27" target="_blank"><img alt="Marcas FEGAN" height="24px" width="24px" title="Marcas FEGAN" class="styled-button" src="/res/chrono.svg"/> Marcas FEGAN</a>
+<a href="https://www.fegan.org/marks/" target="_blank"><img alt="Marcas FEGAN" height="24px" width="24px" title="Marcas FEGAN" class="styled-button" src="/res/chrono.svg"/> Marcas FEGAN</a>
 <div class="clsTitle"><b>Registro de participación</b></div>
 <div id="dvEditParticipationRecord">
     <p />
@@ -40,6 +85,7 @@
     <h2>Nueva participación en prueba</h2>
     <form id="frmParticipantPerTestInParticipationRecord"
         method="post"
+        onsubmit="return chkTimes()"
         action="/participation_record/participant_per_test/modify?id={{ participation_record.key.urlsafe() }}&org=member">
 
         <label for="edMemberPerTest">Miembro {{ usr.surname }}, {{ usr.name }}</label>
@@ -71,6 +117,8 @@
         <br/>
         <input type="submit" value="Guardar" />
     </form>
+
+    <div id="dvError" style="display: none"></div>
 
     {% endif %}
     <h2>Inscripción</h2>
