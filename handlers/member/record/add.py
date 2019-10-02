@@ -8,8 +8,9 @@ import time
 import webapp2
 
 from model.member import Member
-from model.record_entry import SwimStyles
+from model.swim_styles import SwimStyles
 from model.record_entry import RecordEntry
+from model.elapsed_time_distance import ElapsedTimeDistance
 import handlers.general_tools as tools
 
 
@@ -35,7 +36,7 @@ class AddRecordHandler(webapp2.RequestHandler):
                             where=where,
                             style_id=style_id,
                             distance=distance,
-                            milliseconds=(((hours*3600) + (minutes * 60) + seconds) * 1000) + milliseconds)
+                            milliseconds=ElapsedTimeDistance.millis_from_parts(hours, minutes, seconds, milliseconds))
                 usr.records.append(rcrd)
                 usr.put()
                 time.sleep(1)

@@ -20,7 +20,7 @@ class PatreonsHandler(webapp2.RequestHandler):
         usr = Member.current()
 
         if (not usr
-         or not usr.is_admin):
+         or not usr.is_admin()):
             return Member.show_error_unrecognized_usr(self)
 
         # Render patreons
@@ -42,7 +42,7 @@ class PatreonsHandler(webapp2.RequestHandler):
         usr = Member.current()
 
         if (not usr
-         or not (usr.is_admin)):
+         or not (usr.is_admin())):
             return Member.show_error_unrecognized_usr(self)
 
         # Get the data

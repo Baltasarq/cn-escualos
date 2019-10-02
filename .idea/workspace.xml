@@ -2,25 +2,83 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170b234-0101-4c18-8245-a36b7783013b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/handlers/competition/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/competition/add.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/competition/delete.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/competition/management.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/competition/modify.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/competition/test/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/competition/test/add.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/competition.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/add.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/dollar.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/wrench.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/competition_entry.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/competitions.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/edit_competition.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/admin/member/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/admin/member/delete.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/admin/member/generate_csv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/admin/member/import_records.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/competition/test/delete.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/member/open_competitions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/member/participation_record.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/generate_csv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/delete.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/modify.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/retrieve_payment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/modify.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/participant_per_test/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/participant_per_test/delete.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/participation_record/participant_per_test/modify.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/photoserver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/results.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/elapsed_time_distance.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/participation_record.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/swim_styles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/chart.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/chrono.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/link.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/edit_member_participation_record.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/edit_participation_record.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/kernel_import_records.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/member_participation_entry.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/news_entry.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/open_competitions_for_member.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/participant_per_test_entry.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/participation_record_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test_entry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cnescualos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cnescualos.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/members.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/members.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/patreon/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/patreon/delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin/patreons.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin/patreons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/admin_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin_old.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/competition/add.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/competition/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/competition/management.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/management.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/competition/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/modify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/competition/test/add.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/test/add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/docserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/docserver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/ensure_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/ensure_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/kernel.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/kernel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/member/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/member/modify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/member/record/add.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/member/record/add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/member/record/importing.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/member/record/importing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/member/record/show_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/member/record/show_all.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/trials.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/trials.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/index.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/competition.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/competition.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/member.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/member.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/trial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/news.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/news.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/record_entry.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/record_entry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/aqa_ourense.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/escualos.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/escualos.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_old.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_old.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/competitions.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/competitions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_competition.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_competition.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ensure_login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/kernel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kernel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kernel_members.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kernel_members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/member_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/templates/member_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +107,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -74,7 +132,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/handlers/competition" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="recentsLimit" value="5" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -82,15 +140,16 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/handlers/admin/member" />
       <recent name="$PROJECT_DIR$/handlers/member/record" />
       <recent name="$PROJECT_DIR$/handlers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/handlers/competition" />
-      <recent name="$PROJECT_DIR$/res" />
-      <recent name="$PROJECT_DIR$/handlers/competition/test" />
       <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/model" />
+      <recent name="$PROJECT_DIR$/handlers/participation_record" />
+      <recent name="$PROJECT_DIR$/handlers/admin/member" />
+      <recent name="$PROJECT_DIR$/handlers/admin" />
+      <recent name="$PROJECT_DIR$/res" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -222,7 +281,21 @@
       <workItem from="1562746824466" duration="2909000" />
       <workItem from="1562835593577" duration="16916000" />
       <workItem from="1566300053174" duration="4206000" />
-      <workItem from="1566466443969" duration="28997000" />
+      <workItem from="1566466443969" duration="29755000" />
+      <workItem from="1566920834101" duration="10505000" />
+      <workItem from="1567421946585" duration="16000" />
+      <workItem from="1567421981112" duration="139000" />
+      <workItem from="1567422143766" duration="15000" />
+      <workItem from="1567422174657" duration="609000" />
+      <workItem from="1567592876405" duration="4000" />
+      <workItem from="1567843632109" duration="602000" />
+      <workItem from="1568649918983" duration="1205000" />
+      <workItem from="1568708701861" duration="54825000" />
+      <workItem from="1569914274693" duration="12915000" />
+      <workItem from="1569955197005" duration="430000" />
+      <workItem from="1569957717773" duration="401000" />
+      <workItem from="1569988643818" duration="2686000" />
+      <workItem from="1570000994805" duration="13646000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>
@@ -258,6 +331,20 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -271,8 +358,19 @@
     <MESSAGE value="Bufixing" />
     <option name="LAST_COMMIT_MESSAGE" value="Bufixing" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/handlers/participation_record/member_participation/modify.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1566466564859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1570007324387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">

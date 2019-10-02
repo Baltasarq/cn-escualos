@@ -1,0 +1,26 @@
+<p>
+    <b>{{ notice.added }}: {{ notice.title }}</b>
+    {% if notice.body %}
+        <br/><i>{{ notice.body }}</i>
+    {% endif %}
+
+    {% if notice.url or notice.doc or notice.photo %}
+        <p align="right">
+            {% if notice.doc %}
+                <a target="_blank" href="/docserver?id={{ notice.doc.urlsafe() }}">
+                    <img width="16px" height="16px" src="/res/document.svg" class="styled-button" />
+                </a>
+            {% endif %}
+            {% if notice.photo %}
+                <a target="_blank" href="/photoserver?id={{ notice.photo.urlsafe() }}">
+                    <img width="16px" height="16px" src="/res/photo.svg" class="styled-button" />
+                </a>
+            {% endif %}
+            {% if notice.url %}
+                <a target="_blank" href="{{ notice.url }}">
+                    <img width="16px" height="16px" src="/res/link.svg" class="styled-button" />
+                </a>
+            {% endif %}
+        </p>
+    {% endif %}
+</p>

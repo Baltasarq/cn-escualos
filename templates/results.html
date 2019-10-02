@@ -1,0 +1,19 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvTitle"><b>Resultados</b></div>
+<div id="dvItems">
+    {% for doc in result_documents %}
+        <div id="tblItems">
+            <p><table width="100%"><tr>
+            <td width="90%"><b>{{ doc.added }}: {{ doc.title }}</b></td>
+            <td>
+                <a target="_blank" href="/docserver?id={{ doc.key.urlsafe() }}">
+                    <img width="32px" height="32x" src="res/pdf.svg" alt="PDF" title="PDF">
+                </a>
+            </td></tr></table></p>
+        </div>
+    {% else %}
+        No se han encontrado resultados.
+    {% endfor %}
+</div>
+{% endblock %}

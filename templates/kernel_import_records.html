@@ -1,0 +1,55 @@
+{% extends "skeleton.html" %}
+{% block content %}
+
+<div class="clsTitle"><b>Importar marcas</b></div>
+<form id="frmRecordsImport"
+      method="post" action="/admin/member/import_records"
+      enctype="multipart/form-data">
+
+    <label for="edCsv">Archivo de marcas: </label>
+            <input type="file" name="edCsv" id="edCsv" />
+
+    <br/><input type="submit" value="Importar" />
+</form>
+
+<p>
+    <div class="clsTitle"><b>Formato esperado</b></div>
+
+    El archivo CSV es un formato de texto con un registro por línea,
+    cada campo separado por comas. La cabecera es opcional, pero si existe
+    debe empezar por 'nif'. El último campo es opcional y contiene el lugar
+    o la competición donde se logró la marca.
+
+    <p>
+        <b>Formato</b>
+        <br/><i>dni, distancia (m), estilo abreviado, milisegundos, lugar</i>
+    </p>
+
+    <p>
+    <table id="tblItems">
+        <tr>
+            <th>Estilo abreviado</th><th>Estilo</th>
+        </tr>
+        {% for style_tuple in SwimStyles.VALUES %}
+        <tr>
+            <td>
+                {{ style_tuple[0] }}
+            </td>
+            <td>
+                {{ style_tuple[1] }}
+            </td>
+        </tr>
+        {% else %}
+        ¡No hay estilos!
+        {% endfor %}
+    </table>
+    </p>
+
+    <p>
+        <b>Ejemplo</b>
+        <br/>nif,distancia,estilo,milisegundos,lugar
+        <br/>12345678A,50,brz,57980,festival estilos de carballo
+    </p>
+</p>
+
+{% endblock %}

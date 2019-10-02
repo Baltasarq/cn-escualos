@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# coding: utf-8
 # CnEscualos (c) baltasar 2016/19 MIT License <baltasarq@gmail.com>
 
 
@@ -31,7 +32,7 @@ class InfoHandler(webapp2.RequestHandler):
             }
 
             jinja = jinja2.get_jinja2(app=self.app)
-            self.response.write(jinja.render_template("error.html", **template_values))
+            self.response.write(jinja.render_template("error.html", **template_values));
         except Exception as e:
             logging.error(str(e))
             self.response.write("ERROR: " + str(e))

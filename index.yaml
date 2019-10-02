@@ -14,3 +14,8 @@ indexes:
   properties:
   - name: active
   - name: surname
+
+- kind: Member
+  properties:
+  - name: surname
+  - name: name

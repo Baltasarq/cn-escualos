@@ -3,10 +3,14 @@
 
 from google.appengine.ext import ndb
 
+from model.photo import Photo
+from model.document import Document
+
 
 class News(ndb.Model):
     added = ndb.DateProperty(auto_now_add=True)
     title = ndb.StringProperty(required=True)
-    url = ndb.StringProperty()
     body = ndb.StringProperty()
-    photo_id = ndb.IntegerProperty()
+    url = ndb.StringProperty()                              # Optional
+    photo = ndb.KeyProperty(kind=Photo, default=None)       # Optional
+    doc = ndb.KeyProperty(kind=Document, default=None)      # Optional

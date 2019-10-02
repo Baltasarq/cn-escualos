@@ -24,60 +24,47 @@ class Member(ndb.Model):
     active = ndb.BooleanProperty(required=True, indexed=True, default=False)
     surname = ndb.StringProperty(required=True, indexed=True)
     name = ndb.StringProperty(required=True)
-    user_id = ndb.StringProperty(default=None, indexed=True)        # Google user id: usr.user_id()
-    identified = ndb.BooleanProperty(required=True, default=False)  # True if already identified
-    is_admin = ndb.BooleanProperty(required=True, default=False)    # Is it admin?
+    email = ndb.StringProperty(default=None, indexed=True)
     records = ndb.StructuredProperty(RecordEntry, repeated=True)
     comments = ndb.StringProperty()
     photo = ndb.BlobProperty()
 
+    def is_admin(self):
+        return users.is_current_user_admin()
+
     @staticmethod
-    def retrieve_usr_data():
+    def set_admin():
+        admin = Member.query(Member.dni == "ADMIN").get()
+
+        if not admin:
+            admin = Member(
+                dni="ADMIN",
+                active=False,
+                birth=datetime(year=2015, month=6, day=17),
+                comments="admin",
+                soc=2015061700,
+                lic=0,
+                name="admin",
+                surname="root",
+                photo=None)
+
+        admin.email = users.get_current_user().email()
+        admin.put()
+        time.sleep(1)
+
+        admin.gae_usr = users.get_current_user()
+        return admin
+
+    @staticmethod
+    def current():
         toret = None
         gae_usr = users.get_current_user()
 
         if gae_usr:
-            list_usrs_found = Member.query(Member.user_id == gae_usr.user_id()).fetch()
+            toret = Member.query(Member.email == gae_usr.email()).get()
 
-            if (list_usrs_found
-            and len(list_usrs_found) > 0):
-                toret = list_usrs_found[0]
-
-        return toret
-
-    @staticmethod
-    def current():
-        """Returns the current user, or None.
-            :return: The Member object for the current user, or None.
-        """
-
-        toret = Member.retrieve_usr_data()
-        gae_usr = users.get_current_user()
-
-        if users.is_current_user_admin():
-            if not toret:
-                toret = Member()
-                toret.birth = datetime.now()
-                toret.dni = "0A"
-                toret.lic = 0
-                toret.soc = 0
-                toret.surname = "swimmer"
-                toret.name = gae_usr.nickname()
-                toret.user_id = gae_usr.user_id()
-                toret.identified = True
-                toret.is_admin = True
-                toret.active = True
-                toret.comments = "admin"
-                toret.photo = None
-                toret.put()
-        else:
-            if (not toret
-             or not toret.identified
-             or not toret.is_admin):
-                toret = None
-
-        if toret:
-            toret.gae_usr = gae_usr
+            if toret:
+                toret.gae_usr = gae_usr
 
         return toret
 
@@ -86,13 +73,13 @@ class Member(ndb.Model):
         gae_usr = users.get_current_user()
         usr_name = "anonymous" if not gae_usr else gae_usr.email()
 
-        handler.redirect("/error?msg=Unrecognized user: " + usr_name)
+        handler.redirect("/error?msg=Usuario no reconocido: " + usr_name)
         return
 
     @staticmethod
     def assign_data(member, request):
         # Retrieve data
-        member_dni = request.get("edDNI", "")
+        member_dni = request.get("edDNI", "").strip().upper()
         member_birth = request.get("edBirth", "2001-01-01")
         member_surname = request.get("edSurname", "")
         member_name = request.get("edName", "")
@@ -101,6 +88,14 @@ class Member(ndb.Model):
         member_comments = request.get("edComments", "")
         member_photo = request.get("edPhoto", None)
         member_active = request.get("edActive", "no")
+        member_email = request.get("edEmail", "")
+
+        if (not member_dni
+         or not member_email
+         or not member_name
+         or not member_surname
+         or not member_soc):
+            raise Exception("Missing data creating/modifying member.")
 
         # Store
         try:
@@ -117,5 +112,8 @@ class Member(ndb.Model):
         if member_comments: member.comments = member_comments
 
         member.active = member_active.strip() == "yes"
-        member.put()
+        member.email = member_email
+        key = member.put()
         time.sleep(1)
+
+        return key

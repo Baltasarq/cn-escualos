@@ -1,0 +1,15 @@
+Competición
+{{ competition.date }}, {{ competition.type }}, {{ competition.name }}
+
+Participantes
+{% for participant in participation_record.participants %}
+    {%- set member = members[participant.member] -%}
+ {{ member.dni }}, {{ member.lic }}, {{ member.surname }}, {{ member.name }}, {{ ("Sí" if participant.stays_for_lunch else "No") + " se queda a comer" }}, {{ participant.comments }}
+{% endfor %}
+
+Pruebas a nadar por participante
+{% for test_pair in participation_record.participants_per_test %}
+    {%- set member = members[test_pair.member] -%}
+    {%- set test = tests[test_pair.test_uid] -%}
+    {{ member.dni }}, {{ member.lic }}, {{ member.surname }}, {{ member.name }}, {{ test.__str__() }}, {{ ElapsedTimeDistance.str_from_milliseconds(test_pair.milliseconds) | safe }}
+{% endfor %}

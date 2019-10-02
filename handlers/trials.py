@@ -17,7 +17,7 @@ class TrialsHandler(webapp2.RequestHandler):
         usr = Member.current()
 
         # Get relevant trials
-        trials = Trial.query().order(Trial.date)
+        trials = Trial.query().order(-Trial.date)
 
         # Render
         try:

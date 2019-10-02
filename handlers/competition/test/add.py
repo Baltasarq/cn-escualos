@@ -8,7 +8,7 @@ import time
 
 import handlers.general_tools as gentools
 from model.member import Member
-from model.record_entry import SwimStyles
+from model.swim_styles import SwimStyles
 from model.competition import Competition
 from model.competition import Test
 
@@ -18,7 +18,7 @@ class AddCompetitionTestHandler(webapp2.RequestHandler):
         # Check if the user is logged in
         usr = Member.current()
 
-        if not usr or not usr.is_admin:
+        if not usr or not usr.is_admin():
             Member.show_error_unrecognized_usr(self)
             return
 
@@ -27,21 +27,27 @@ class AddCompetitionTestHandler(webapp2.RequestHandler):
             competition = Competition.retrieve_competition(self)
 
             distance = gentools.int_from_str(self.request.get("edDistance", "0"))
-            style = self.request.get("edStyle", "")
-            relayed = (self.request.get("edRelayed", "off") == "on")
+            style_abbrev = self.request.get("edStyle", "")
+            is_relayed = (self.request.get("edRelayed", "off") == "on")
+            str_gender = (self.request.get("edGender", "0"))
+
+            try:
+                gender = int(str_gender)
+            except:
+                return self.redirect("/error?msg=Adding new test to competition, gender cannot be: " + str_gender)
 
             if distance < 25:
                 return self.redirect("/error?msg=Adding new test to competition, distance cannot be: " + str(distance) + "m.")
 
-            if not style:
+            if not style_abbrev:
                 return self.redirect("/error?msg=Adding new test to competition: style not found.")
 
-            competition.tests.append(
-                Test(
-                    distance=distance,
-                    style_id=SwimStyles.id_from_abbrev(style),
-                    is_relay=relayed
-                ))
+            competition.add_new_test(
+                distance,
+                SwimStyles.id_from_abbrev(style_abbrev),
+                is_relayed,
+                gender
+            )
 
             competition.put()
             time.sleep(1)

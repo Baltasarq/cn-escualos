@@ -4,8 +4,14 @@
 <div id="dvItems">
     <table width="100%">
     {% for competition in competitions %}
+        {% set participation_record = ParticipationRecord.query(ParticipationRecord.competition == competition.key).get() %}
         <tr width="100%">
             <td width="10%">
+                {% if participation_record %}
+                    <a href="/participation_record/modify?id={{ participation_record.key.urlsafe() }}">
+                        <img width="16" height="16" alt="Ver registro" title="Ver registro" src="/res/chart.svg" style="background-color: orangered">
+                    </a>
+                {% endif %}
                 <a href="/competition/modify?id={{ competition.key.urlsafe() }}">
                     <img width="16" height="16" alt="Modificar" title="Modificar" src="/res/modify.svg" style="background-color: orangered">
                 </a>

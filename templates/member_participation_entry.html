@@ -1,0 +1,19 @@
+{% set member = member_participation.member.get() %}
+
+<td>
+    {{ member.surname }}, {{ member.name }}
+</td>
+<td>
+    {% if member_participation.payment %}
+        <a href="/participation_record/member_participation/retrieve_payment?id={{ participation_record.key.urlsafe() }}&member_id={{ member_participation.member.urlsafe() }}">
+            Resguardo
+        </a>
+    {% else %}
+        No disponible.
+    {% endif %}
+</td>
+<td>
+    {{ "Se queda a comer." if member_participation.stays_for_lunch else "No se queda a comer." }}
+</td>
+</tr>
+<tr><td></td><td colspan="2"><i>{{ member_participation.comments }}</i></td>

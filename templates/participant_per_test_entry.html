@@ -1,0 +1,12 @@
+{% set member = participant_per_test.member.get() %}
+{% set test = competition.look_for_test_with_uid(participant_per_test.test_uid) %}
+
+<td>
+    {{ member.surname }}, {{ member.name }}
+</td>
+<td>
+    {{ test.__str__() }}
+</td>
+<td>
+    {{ ElapsedTimeDistance.str_from_milliseconds(participant_per_test.milliseconds) }}
+</td>

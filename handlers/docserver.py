@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# MIT License
-# (c) baltasar 2016
+# CNEscualos (c) Baltasar 2016/19 MIT License <baltasarq@gmail.com>
+
 
 import webapp2
 from google.appengine.ext import ndb

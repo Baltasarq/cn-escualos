@@ -9,6 +9,7 @@ from webapp2_extras import jinja2
 import handlers.general_tools as gentools
 from model.member import Member
 from model.competition import Competition
+from model.participation_record import ParticipationRecord
 from model.appinfo import AppInfo
 
 
@@ -16,7 +17,7 @@ class ManageCompetitionsHandler(webapp2.RequestHandler):
     def get(self):
         # Check if the user is logged in
         usr = Member.current()
-        if not usr or not usr.is_admin:
+        if not usr or not usr.is_admin():
             Member.show_error_unrecognized_usr(self)
             return
 
@@ -27,7 +28,7 @@ class ManageCompetitionsHandler(webapp2.RequestHandler):
                 "info": AppInfo,
                 "usr": usr,
                 "competitions": competitions,
-                "competition": competitions.get() if competitions else None
+                "ParticipationRecord": ParticipationRecord
             }
 
             jinja = jinja2.get_jinja2(app=self.app)

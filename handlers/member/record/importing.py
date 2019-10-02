@@ -3,7 +3,7 @@
 
 from model.member import Member
 from model.record_entry import RecordEntry
-from model.record_entry import SwimStyles
+from model.swim_styles import SwimStyles
 
 
 def import_records_csv_file(file_contents):
@@ -45,10 +45,6 @@ def import_records_csv_file(file_contents):
                             milliseconds=millis,
                             where=where)
         m.records.append(record_entry)
-
-        if not m.user_id:
-            m.user_id = None
-
         m.put()
 
     summary += "\nProcessed " + str(i) + " row(s)."

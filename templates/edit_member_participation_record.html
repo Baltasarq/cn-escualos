@@ -1,0 +1,119 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<a href="/member/open_competitions"><img alt="Volver a competiciones abiertas" height="24px" width="24px" title="Volver a competiticiones abiertas" class="styled-button" src="/res/back.svg"/></a>
+<a href="/member/record/show_all" target="_blank"><img alt="Marcas Escualos" height="24px" width="24px" title="Marcas Escualos" class="styled-button" src="/res/chrono.svg"/> Marcas Escualos</a>
+<a href="https://www.fegan.org/post/27" target="_blank"><img alt="Marcas FEGAN" height="24px" width="24px" title="Marcas FEGAN" class="styled-button" src="/res/chrono.svg"/> Marcas FEGAN</a>
+<div class="clsTitle"><b>Registro de participación</b></div>
+<div id="dvEditParticipationRecord">
+    <p />
+    {{ competition.date }} <b>{{ competition.name }}</b>
+    <br/><i>{{ competition.where }}</i>
+    <p/>
+
+    {% if member_participation %}
+    <h2>Participación en pruebas</h2>
+    <table border="0" width="100%">
+        {% for test in tests %}
+            {% set this_participants_per_test =  member_participation_in_tests[test.uid] %}
+            
+            {% if this_participants_per_test %}
+                <tr><td colspan="3"><b>{{ test.__str__() }}</b></td></tr>
+                
+                {% for participant_per_test in this_participants_per_test %}
+                    <tr>
+                        <td>
+                            <a href="/participation_record/participant_per_test/delete?id={{ participation_record.key.urlsafe() }}&org=member&member_test_id={{ participant_per_test.uid }}">
+                                <img width="16" height="16" alt="Borrar" title="Borrar" src="/res/delete.svg" style="background-color: orangered">
+                            </a>
+                        </td>
+                        {% include "participant_per_test_entry.html" %}
+                    </tr>
+                {% else %}
+                    <tr><td colspan="3">No participas en ninguna prueba.</td></tr>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+            <tr><td colspan="3">No participas en ninguna prueba.</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>Nueva participación en prueba</h2>
+    <form id="frmParticipantPerTestInParticipationRecord"
+        method="post"
+        action="/participation_record/participant_per_test/modify?id={{ participation_record.key.urlsafe() }}&org=member">
+
+        <label for="edMemberPerTest">Miembro {{ usr.surname }}, {{ usr.name }}</label>
+        <select id="edMemberPerTest" name="edMemberPerTest" style="display: none">
+                <option value="{{ usr.key.urlsafe() }}" selected>{{ usr.surname }}, {{ usr.name }}</option>
+        </select>
+
+        <label for="edTest">Prueba </label>
+        <select id="edTest" name="edTest">
+            {% for test in competition.get_sorted_tests() %}
+                <option value="{{ test.uid }}">{{ test.__str__() }}</option>
+            {% endfor %}
+        </select>
+
+        <br/>
+        Marca
+        <input style="width: 80px" type="number" id="edHours" name="edHours" value="0" />
+        <label for="edHours">h</label>
+
+        <input style="width: 80px" type="number" id="edMinutes" name="edMinutes" value="0" />
+        <label for="edMinutes">'</label>
+
+        <input style="width: 80px" type="number" id="edSeconds" name="edSeconds" value="0" />
+        <label for="edSeconds">"</label>
+
+        <input style="width: 80px" type="number" id="edMillis" name="edMillis" value="0" />
+        <label for="edMillis">ms</label>
+
+        <br/>
+        <input type="submit" value="Guardar" />
+    </form>
+
+    {% endif %}
+    <h2>Inscripción</h2>
+    <table border="0" width="100%">
+        <tr>
+        {% if member_participation %}
+                <td>
+                    <a href="/participation_record/member_participation/delete?id={{ participation_record.key.urlsafe() }}&member_id={{ member_participation.member.urlsafe() }}&org=member">
+                        <img width="16" height="16" alt="Borrar" title="Borrar" src="/res/delete.svg" style="background-color: orangered">
+                    </a>
+                </td>
+
+                {% include "member_participation_entry.html" %}
+        </tr>
+        {% else %}
+            <tr><td colspan="3">No te has inscrito.</td></tr>
+        {% endif %}
+    </table>
+
+    <h2>Realizar inscripción</h2>
+    <form id="frmParticipantInParticipationRecord"
+      method="post" action="/participation_record/member_participation/modify?id={{ participation_record.key.urlsafe() }}&org=member"
+      enctype="multipart/form-data">
+
+        <label for="edMember">Miembro: {{ usr.surname }}, {{ usr.name }}</label>
+        <select id="edMember" name="edMember" style="display: none">
+            <option value="{{ usr.key.urlsafe() }}" selected>{{ usr.surname }}, {{ usr.name }}</option>
+        </select>
+
+        <input type="checkbox" name="edLunch" id="edLunch" />
+        <label for="edLunch">Se queda a comer </label>
+
+        <br/>
+        <label for="edComments">Observaciones: </label>
+        <textarea id="edComments" name="edComments" cols="60"></textarea>
+
+        <br/>
+        <label for="edPayment">Recibo de pago </label>
+        <input type="file" id="edPayment" name="edPayment">
+
+        <br/>
+        <input type="submit" value="Guardar" id="btSend" />
+    </form>
+</div>
+
+{% endblock %}

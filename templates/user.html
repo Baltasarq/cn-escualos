@@ -131,6 +131,12 @@
         return toret;
     }
 </script>
+<div id="dvActionsForMember">
+    <a href="#" onclick="window.location='/member/open_competitions'">
+        <img src="/res/competitions.svg" height="32px" width="32px" class="styled-button">
+        Competiciones abiertas
+    </a>
+</div>
 <div id="dvTitle"><b>Member</b></div>
     <div id="dvError" style="display: none"></div>
     {% if usr %}
@@ -183,7 +189,7 @@
                     </td>
                 </tr>
                 <tr>
-                    {% if usr.is_admin %}
+                    {% if usr.is_admin() %}
                     <td>
                         <label for="edActive">Activo: </label>
                         <select id="edActive" name="edActive">

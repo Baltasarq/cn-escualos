@@ -8,7 +8,7 @@ from webapp2_extras import jinja2
 
 import handlers.general_tools as gentools
 from model.member import Member
-from model.record_entry import SwimStyles
+from model.swim_styles import SwimStyles
 from model.appinfo import AppInfo
 
 
@@ -25,7 +25,7 @@ class ModifyMemberHandler(webapp2.RequestHandler):
             data = {
                 "info": AppInfo,
                 "usr": usr,
-                "SwimStyles": SwimStyles
+                "SwimStyles": SwimStyles,
             }
 
             jinja = jinja2.get_jinja2(app=self.app)

@@ -11,15 +11,16 @@ from webapp2_extras import jinja2
 import handlers.general_tools as gentools
 from model.member import Member
 from model.competition import Competition
+from model.competition import Test
 from model.appinfo import AppInfo
-from model.record_entry import SwimStyles
+from model.swim_styles import SwimStyles
 
 
 class ModifyCompetitionHandler(webapp2.RequestHandler):
     def get(self):
         # Check if the user is logged in
         usr = Member.current()
-        if not usr or not usr.is_admin:
+        if not usr or not usr.is_admin():
             Member.show_error_unrecognized_usr(self)
             return
 
@@ -31,6 +32,7 @@ class ModifyCompetitionHandler(webapp2.RequestHandler):
                 "info": AppInfo,
                 "usr": usr,
                 "SwimStyles": SwimStyles,
+                "TEST_GENDERS": Test.TEST_GENDERS,
                 "competition": competition
             }
 
@@ -44,7 +46,7 @@ class ModifyCompetitionHandler(webapp2.RequestHandler):
         # Check if the user is logged in
         usr = Member.current()
 
-        if not usr or not usr.is_admin:
+        if not usr or not usr.is_admin():
             Member.show_error_unrecognized_usr(self)
             return
 

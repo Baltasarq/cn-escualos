@@ -11,32 +11,26 @@
 <div id="dvItems">
 {% for notice in news %}
 <div id="tblItems">
-    <p>
-    <b>{{notice.added}}: {{notice.title}}</b>
-    <br/><i>{{notice.body}}</i>
-    {% if notice.url %}
-        <p align="right"><a target="_blank" href="{{notice.url}}"><b>&gt;&gt;</b></a></p>
-    {% endif %}
-    </p>
+    {% include "news_entry.html" %}
 </div>
 {% else %}
     No hay noticias registradas.
 {% endfor %}
 </div>
 
-<div id="dvPatreons">
+<div id="dvPatrons">
     <table width="100%">
         <tr>
-        {% for patreon in patreons %}
-            {% if patreon.photo %}
+        {% for patron in patrons %}
+            {% if patron.photo %}
             <td style="text-align: center">
-            <a href="{{ patreon.url }}" target="_blank">
+            <a href="{{ patron.url }}" target="_blank">
                 <img class="clsPhoto" width="64" height="64"
-                     alt="{{ patreon.name }}" title="{{ patreon.name }}"
-                     src="data:image/png;base64,{{ patreon.photo.encode('base64') }}">
+                     alt="{{ patron.name }}" title="{{ patron.name }}"
+                     src="data:image/png;base64,{{ patron.photo.encode('base64') }}">
             </a>
             {% endif %}
-            <br/><a href="{{ patreon.url }}" target="_blank">{{ patreon.name }}</a>
+            <br/><a href="{{ patron.url }}" target="_blank">{{ patron.name }}</a>
             </td>
 
             {% if loop.index % 5 == 0 %}

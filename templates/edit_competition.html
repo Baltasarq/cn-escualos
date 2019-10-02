@@ -78,6 +78,13 @@
                     <label for="edRelayed">Relevos: </label>
                     <input type="checkbox" id="edRelayed" name="edRelayed" />
                 </td>
+                <td>
+                    <select id="edGender" name="edGender">
+                        {% for test_gender in TEST_GENDERS %}
+                            <option value="{{ loop.index0 }}">{{ test_gender }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
             </tr>
         </table>
         <input type="submit" value="Añadir"/>
@@ -88,15 +95,13 @@
 <div class="clsTitle"><b>Pruebas</b></div>
 <div id="dvTests">
     <table width="100%">
-    {% for test in competition.tests %}
+    {% for test in competition.get_sorted_tests() %}
         <tr>
             <td width="10%">
-                <a href="/competition/test/delete?n={{ loop.index }}">
+                <a href="/competition/test/delete?id={{ competition.key.urlsafe() }}&test_id={{ test.uid }}">
                     <img width="16" height="16" alt="Borrar" title="Borrar" src="/res/delete.svg" style="background-color: orangered">
                 </a></td>
-            <td width="40%">{{ test.distance }}m.</td>
-            <td width="40%">{{ test.get_style_name() }}</td>
-            <td width="10%">{{ "relevos" if test.is_relay }}</td>
+            {% include "test_entry.html" %}
         </tr>
     {% else %}
         No hay pruebas en esta competición.

@@ -20,14 +20,16 @@
                     {{ usr.name }}
                 </a>
             {% else %}
-                <a href="{{ login_url }}">
-                    <img alt="usr" height="64" width="64" src="/res/member.svg" >
-                    <br />login
-                </a>
+                {% if login_url %}
+                    <a href="{{ login_url }}">
+                        <img alt="usr" height="64" width="64" src="/res/member.svg" >
+                        <br />login
+                    </a>
+                {% endif %}
             {% endif %}
             </td>
             <td width="70%" style="text-align: center"><h1>{{ info.Title }}</h1></td>
-            {% if usr.is_admin %}
+            {% if usr and usr.is_admin() %}
                 <td width="5%" style="text-align: left">
                     <a href="/kernel">
                         <img style="background-color: orangered" height="32" width="32" src="/res/work.svg">
@@ -39,6 +41,7 @@
     <p align="right">
         <a target="_blank" href="{{ info.CalendarURL }}"><b>Actividades</b></a>
         <a href="/member/record/show_all"><b>Marcas</b></a>
+        <a href="/results"><b>Resultados</b></a>
     </p>
 </div>
 <div id="dvContainer">

@@ -16,13 +16,18 @@ class KernelHandler(webapp2.RequestHandler):
         usr = Member.current()
 
         if (not usr
-         or not usr.is_admin):
+         or not usr.is_admin()):
             return Member.show_error_unrecognized_usr(self)
 
         # Render
         try:
             jinja = jinja2.get_jinja2(app=self.app)
-            template_values = { "usr": usr, "info": AppInfo }
+
+            template_values = {
+                "usr": usr,
+                "info": AppInfo
+            }
+
             self.response.write(jinja.render_template("kernel.html", **template_values))
         except Exception as e:
             logging.error(str(e))

@@ -1,0 +1,21 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div class="clsTitle"><b>Competiciones abiertas</b></div>
+<div id="dvItems">
+    <table width="100%">
+    {% for competition in competitions %}
+        <tr width="100%">
+            <td>
+                <a href="/member/participation_record?id={{ participation_record_keys[loop.index0].urlsafe() }}">
+                    <img width="16" height="16" alt="Ver registro" title="Ver registro" src="/res/chart.svg" style="background-color: orangered">
+                </a>
+            </td>
+
+            {% include "competition_entry.html" %}
+        </tr>
+    {% else %}
+        No hay competiciones abiertas.
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}

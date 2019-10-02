@@ -11,39 +11,9 @@
         </tr>
     </table>
 </div>
-<div id="dvAdminLinks">
-    <a href="/admin/patreons">Patreons</a>
-</div>
 <hr>
 <div id="dvManagement">
     <form id="frmCfg" method="post" action="/admin_old" enctype="multipart/form-data">
-        <b><label for="edDni">DNI</label></b> <input type="text" placeholder="dni" name="edDni" id="edDni">
-        <label for="edLic">License</label> <input type="text" placeholder="license" name="edLic" id="edLic">
-        <label for="edSoc">Membership #</label> <input type="text" placeholder="membership #" name="edSoc" id="edSoc">
-        <br/>
-        <label for="edName">Name</label> <input type="text" placeholder="name" name="edName" id="edName">
-        <label for="edSurname">Surname</label> <input type="text" placeholder="surname" name="edSurname" id="edSurname">
-        <br/>
-        <label for="edBirth">Birth date</label> <input type="date" value="01/01/1980" name="edBirth" id="edBirth">
-        <br />
-        <label for="edActive">Active</label> <input type="text" value="yes" name="edActive" id="edActive">
-        <br/>
-        <label for="edComments">Comments</label> <textarea placeholder="comments" name="edComments" id="edComments"></textarea>
-        <br>
-        <label for="edPhoto">Upload photo file (will be scaled to 64x64)</label> <input type="file" name="edPhoto" id="edPhoto" />
-        <br/>
-        <label for="edFileImport">Records CSV file for importing</label><input type="file" name="edFileImport" id="edFileImport" />
-        <br/>
-        <select id="edOpMember" name="edOpMember">
-            <option value="nop">Nop</option>
-            <option value="add">Add</option>
-            <option value="modify">Modify</option>
-            <option value="delete">Delete</option>
-            <option value="list">List</option>
-            <option value="import_records">Import records</option>
-        </select><input type="submit" value="Add, delete or modify member; list members; import records">
-        <p></p>
-        <hr>
         <b><label for="edDate">Date</label></b> <input type="date" placeholder="date" name="edDate" id="edDate">
         <br>
         <label for="edTrialName">Name</label> <input type="text" placeholder="trial name" name="edTrialName" id="edTrialName">
@@ -58,6 +28,7 @@
              <option value="modify">Modify</option>
             <option value="delete">Delete</option>
         </select><input type="submit" value="Add, delete or modify trial">
+
         <hr>
         <b><label for="edTitle">Title</label></b> <input type="text" placeholder="News title..." name="edTitle" id="edTitle">
         <br>
@@ -66,11 +37,28 @@
         <br>
         <b><label for="edUrl">URL</label></b> <input type="text" placeholder="News url..." name="edUrl" id="edUrl">
         <br>
+        <b><label for="edDocForNews">Doc (optional)</label></b>
+        <select id="edDocForNews" name="edDocForNews">
+            <option value="">N/A</option>
+            {% for document in last_documents %}
+                <option value="{{ document.key.urlsafe() }}">{{ document.title }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <b><label for="edPhotoForNews">Photo (optional)</label></b>
+        <select id="edPhotoForNews" name="edPhotoForNews">
+            <option value="">N/A</option>
+            {% for photo in last_photos %}
+                <option value="{{ photo.key.urlsafe() }}">{{ photo.title }}</option>
+            {% endfor %}
+        </select>
+        <br>
         <select id="edOpNews" name="edOpNews">
             <option value="nop">Nop</option>
             <option value="add">Add</option>
             <option value="delete">Delete</option>
         </select><input type="submit" value="Add or delete news">
+
         <hr>
         <b><label for="edPhotoTitle">Photo title</label></b> <input type="text" placeholder="Photo title..." name="edPhotoTitle" id="edPhotoTitle">
         <br>
@@ -84,6 +72,7 @@
             <option value="delete">Delete</option>
         </select>
         <input type="submit" value="Add or delete photo">
+
         <hr>
         <b><label for="edDocTitle">Document title</label></b> <input type="text" placeholder="Document title..." name="edDocTitle" id="edDocTitle">
         <br>

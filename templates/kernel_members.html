@@ -1,19 +1,113 @@
 {% extends "skeleton.html" %}
 {% block content %}
-<div id="dvWarning">
-    <img height="24px" height="24px" src="/res/warning.svg" title="warning" alt="warning">
-    &nbsp;Kernel
-</div>
+
+<a href="/admin/member/generate_csv">
+    <img src="/res/document.svg" height="32px" width="32px" class="styled-button"
+         alt="Descargar CSV" title="Descargar CSV"/>
+    Descargar CSV
+</a>
+
+<a href="/admin/member/import_records">
+    <img src="/res/chrono.svg" height="32px" width="32px" class="styled-button"
+         alt="Importar marcas" title="Importar marcas"/>
+    Importar marcas
+</a>
+
+<div class="clsTitle"><b>Datos</b></div>
+<form id="frmMember"
+      method="post" action="/admin/members"
+      enctype="multipart/form-data"
+      onsubmit="return chk_member_data()">
+    <table border="0" width="100%">
+    <tr>
+        <td style="padding-bottom: 15pt">
+            <label for="edPhoto">Nueva foto: </label>
+            <input type="file" name="edPhoto" id="edPhoto" accept="image/*" />
+            <br/>
+            <i>(será reescalada a 64x64)</i>
+        </td>
+        <td style="text-align: center; padding-bottom: 15pt">
+            {% if chosen_usr.photo %}
+                <img class="clsPhoto" height="64" width="64" alt="{{ usr.name }}"
+                     src="data:image/png;base64,{{ chosen_usr.photo.encode('base64') }}" />
+            {% else %}
+                <img class="clsPhoto" height="64" width="64" alt="No hay foto"
+                     src="/res/unknown_member.svg"
+                     style="background-color: black"/>
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="edDNI">DNI: </label>
+            <input required="required" type="text" id="edDNI" name="edDNI" value="{{ chosen_usr.dni }}">
+        </td>
+        <td>
+            <label for="edBirth">Fecha de nacimiento: </label>
+            <input type="date" id="edBirth" name="edBirth" value="{{ chosen_usr.birth }}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="edSurname">Apellidos: </label>
+            <input required="required" type="text" id="edSurname" name="edSurname" value="{{ chosen_usr.surname }}">
+        </td>
+        <td>
+            <label for="edName">Nombre: </label>
+            <input required="required" type="text" id="edName" name="edName" value="{{ chosen_usr.name }}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="edActive">Activo: </label>
+            <select id="edActive" name="edActive">
+                <option value="yes" {% if chosen_usr.active %} selected {% endif %}>Yes</option>
+                <option value="no" {% if not chosen_usr.active %} selected {% endif %}>No</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="edLic">Número de licencia: </label>
+            <input type="number" id="edLic" name="edLic" value="{{ chosen_usr.lic }}">
+        </td>
+        <td>
+            <label for="edSoc">Número de socio: </label>
+            <input type="number" id="edSoc" name="edSoc" value="{{ chosen_usr.soc }}">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="edComments"><i>Motto</i>: </label>
+        </td>
+        <td>
+            <textarea id="edComments" name="edComments"
+                    rows="5" cols="50">{{ chosen_usr.comments }}</textarea>
+        </td>
+    </tr>
+    <tr>
+    <td>
+        <label for="edEmail"><i>E.Mail</i>: </label>
+    </td>
+    <td>
+        <input type="text" id="edEmail" name="edEmail" value="{{ chosen_usr.email }}"/>
+    </td>
+    </tr>
+    </table>
+    <input type="submit" value="Guardar" id="btSend" />
+</form>
+
+<p/>
 <div class="clsTitle"><b>Miembros</b></div>
 <div id="dvItems">
     <table width="100%">
     {% for member in members %}
         <tr width="100%">
             <td width="20%">
-                <a href="">
+                <a href="/admin/members?id={{ member.key.urlsafe() }}">
                     <img width="16" height="16" alt="Modificar" title="Modificar" src="/res/modify.svg" style="background-color: orangered">
                 </a>
-                <a href="">
+                <a href="/admin/member/delete?id={{ member.key.urlsafe() }}">
                     <img width="16" height="16" alt="Borrar" title="Borrar" src="/res/delete.svg" style="background-color: orangered">
                 </a>
             </td>
@@ -27,8 +121,8 @@
             {% endif %}
             </td>
             <td width="60%" id="tblItems">
-                <b>{{member.surname}}, {{member.name}}</b>
-                <br/><i>{{member.comments}}</i>
+                <b>{{ member.surname}}, {{ member.name }}</b>
+                <br/><i>{{ member.comments }}</i>
             </td>
         </tr>
     {% else %}
@@ -36,76 +130,4 @@
     {% endfor %}
     </table>
 </div>
-
-<div class="clsTitle"><b>Información específica</b></div>
-<form id="frmMember"
-      method="post" action="/member/modify"
-      enctype="multipart/form-data"
-      onsubmit="return chk_member_data()">
-    <table border="0" width="100%">
-    <tr>
-        <td style="padding-bottom: 15pt">
-            <label for="edPhoto">Nueva foto: </label>
-            <input type="file" name="edPhoto" id="edPhoto" accept="image/*" />
-            <br/>
-            <i>(será reescalada a 64x64)</i>
-        </td>
-        <td style="text-align: center; padding-bottom: 15pt">
-            {% if usr.photo %}
-                <img class="clsPhoto" height="64" width="64" alt="{{ usr.name }}"
-                     src="data:image/png;base64,{{usr.photo.encode('base64')}}" />
-            {% else %}
-                <img class="clsPhoto" height="64" width="64" alt="No hay foto"
-                     src="/res/unknown_member.svg"
-                     style="background-color: black"/>
-            {% endif %}
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <label for="edDNI">DNI: </label>
-            <input required="required" type="text" id="edDNI" name="edDNI" value="{{ usr.dni }}">
-        </td>
-        <td>
-            <label for="edBirth">Fecha de nacimiento: </label>
-            <input type="date" id="edBirth" name="edBirth" value="{{ usr.birth }}">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <label for="edSurname">Apellidos: </label>
-            <input required="required" type="text" id="edSurname" name="edSurname" value="{{ usr.surname }}">
-        </td>
-        <td>
-            <label for="edName">Nombre: </label>
-            <input required="required" type="text" id="edName" name="edName" value="{{ usr.name }}">
-        </td>
-    </tr>
-    <tr>
-        {% if usr.is_admin %}
-        <td>
-            <label for="edActive">Activo: </label>
-            <select id="edActive" name="edActive">
-                <option value="yes" {% if usr.active %} selected {% endif %}>Yes</option>
-                <option value="no" {% if not usr.active %} selected {% endif %}>No</option>
-            </select>
-        </td>
-        {% endif %}
-        <td>
-            <label for="edLic">Número de licencia: </label>
-            <input type="number" id="edLic" name="edLic" value="{{ usr.lic }}">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <label for="edComments"><i>Motto</i>: </label>
-        </td>
-        <td>
-            <textarea id="edComments" name="edComments"
-                    rows="5" cols="50">{{ usr.comments }}</textarea>
-        </td>
-    </tr>
-    </table>
-    <input type="submit" value="Guardar" id="btSend" />
-</form>
 {% endblock %}

@@ -4,13 +4,7 @@
 <div id="dvItems">
     {% for notice in news %}
     <div id="tblItems">
-        <p>
-        <b>{{notice.added}}: {{notice.title}}</b>
-        <br/><i>{{notice.body}}</i>
-        {% if notice.url %}
-            <p align="right"><a target="_blank" href="{{notice.url}}"><b>&gt;&gt;</b></a></p>
-        {% endif %}
-        </p>
+        {% include "news_entry.html" %}
     </div>
     {% else %}
         No hay noticias registradas.

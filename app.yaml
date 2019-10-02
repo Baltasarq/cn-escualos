@@ -25,10 +25,17 @@ handlers:
 
 - url: /ensure_login
   script: handlers.ensure_login.app
-  login: required
 
 - url: /member/modify
   script: handlers.member.modify.app
+  login: required
+
+- url: /member/open_competitions
+  script: handlers.member.open_competitions.app
+  login: required
+
+- url: /member/participation_record
+  script: handlers.member.participation_record.app
   login: required
 
 - url: /member/record/add
@@ -60,8 +67,14 @@ handlers:
 - url: /docserver
   script: handlers.docserver.app
 
+- url: /photoserver
+  script: handlers.photoserver.app
+
 - url: /error
   script: handlers.error.app
+
+- url: /results
+  script: handlers.results.app
 
 - url: /info
   script: handlers.info.app
@@ -86,6 +99,38 @@ handlers:
   script: handlers.competition.test.add.app
   login: admin
 
+- url: /competition/test/delete
+  script: handlers.competition.test.delete.app
+  login: admin
+
+- url: /participation_record/modify
+  script: handlers.participation_record.modify.app
+  login: admin
+
+- url: /participation_record/generate_csv
+  script: handlers.participation_record.generate_csv.app
+  login: admin
+
+- url: /participation_record/member_participation/modify
+  script: handlers.participation_record.member_participation.modify.app
+  login: required
+
+- url: /participation_record/member_participation/delete
+  script: handlers.participation_record.member_participation.delete.app
+  login: required
+
+- url: /participation_record/member_participation/retrieve_payment
+  script: handlers.participation_record.member_participation.retrieve_payment.app
+  login: required
+
+- url: /participation_record/participant_per_test/modify
+  script: handlers.participation_record.participant_per_test.modify.app
+  login: required
+
+- url: /participation_record/participant_per_test/delete
+  script: handlers.participation_record.participant_per_test.delete.app
+  login: required
+
 - url: /kernel
   script: handlers.kernel.app
   login: admin
@@ -98,8 +143,20 @@ handlers:
   script: handlers.admin.patreons.app
   login: admin
 
+- url: /admin/member/generate_csv
+  script: handlers.admin.member.generate_csv.app
+  login: admin
+
+- url: /admin/member/import_records
+  script: handlers.admin.member.import_records.app
+  login: admin
+
 - url: /admin/patreon/delete
   script: handlers.admin.patreon.delete.app
+  login: admin
+
+- url: /admin/member/delete
+  script: handlers.admin.member.delete.app
   login: admin
 
 - url: /admin/members

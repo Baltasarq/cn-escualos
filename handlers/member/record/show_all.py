@@ -9,7 +9,7 @@ from webapp2_extras import jinja2
 from model.member import Member
 from model.appinfo import AppInfo
 from model.record_entry import RecordEntry
-from model.record_entry import SwimStyles
+from model.swim_styles import SwimStyles
 
 
 class Record:
@@ -43,7 +43,7 @@ class ShowAllRecordsHandler(webapp2.RequestHandler):
             members = Member.query()
 
             # Get current user, but anyway this section is public
-            usr = Member.retrieve_usr_data()
+            usr = Member.current()
 
             # Collect all data
             # Create a dictionary distance -> style -> records_list

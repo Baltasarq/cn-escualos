@@ -6,8 +6,8 @@ import time
 import logging
 import datetime
 import webapp2
-from google.appengine.api import images
 from webapp2_extras import jinja2
+from google.appengine.ext import ndb
 
 from model.appinfo import AppInfo
 from model.member import Member
@@ -15,7 +15,6 @@ from model.trial import Trial
 from model.news import News
 from model.photo import Photo
 from model.document import Document
-from handlers.member.record.importing import import_records_csv_file
 
 
 class AdminHandler(webapp2.RequestHandler):
@@ -29,7 +28,14 @@ class AdminHandler(webapp2.RequestHandler):
         # Render
         try:
             jinja = jinja2.get_jinja2(app=self.app)
-            template_values = {"usr": usr, "info": AppInfo}
+
+            template_values = {
+                "usr": usr,
+                "info": AppInfo,
+                "last_documents": Document.query().order(-Document.added).fetch(20),
+                "last_photos": Photo.query().order(-Document.added).fetch(20),
+            }
+
             self.response.write(jinja.render_template("admin_old.html", **template_values))
         except Exception as e:
             logging.error(str(e))
@@ -38,84 +44,11 @@ class AdminHandler(webapp2.RequestHandler):
 
     def post(self):
         op_trial = self.request.get("edOpTrial")
-        op_member = self.request.get("edOpMember")
         op_news = self.request.get("edOpNews")
         op_photo = self.request.get("edOpPhoto")
         op_doc = self.request.get("edOpDoc")
 
-        if op_member and op_member != "nop":
-            # Pick up member info
-            member_dni = self.request.get("edDni")
-
-            # Doit
-            if op_member == "import_records":
-                csv_records_contents = self.request.get("edFileImport")
-                result_summary = import_records_csv_file(csv_records_contents)
-                print("Summary: " + result_summary)
-
-                return self.redirect("/error?msg=" + result_summary.replace('\n', ' '))
-            elif op_member == "list":
-                template_values = {"members": Member.query()}
-                jinja = jinja2.get_jinja2(app=self.app)
-                self.response.headers['Content-Type'] = "text/csv"
-                self.response.headers['Content-Disposition'] = "attachment; filename=cnescualos-members.csv"
-                self.response.write(jinja.render_template("member_data.csv", **template_values))
-                return
-            elif op_member == "add" or op_member == "modify":
-                # Retrieve
-                member_lic = self.request.get("edLic")
-                member_soc = self.request.get("edSoc")
-                member_birth = self.request.get("edBirth")
-                member_lic = int(member_lic) if member_lic else None
-                member_soc = int(member_soc) if member_soc else None
-
-                if member_birth:
-                    member_birth = datetime.datetime.strptime(member_birth, "%Y-%m-%d")
-                else:
-                    member_birth = datetime.date(1970, 1, 1)
-
-                member_name = self.request.get("edName")
-                member_surname = self.request.get("edSurname")
-                member_comments = self.request.get("edComments", "")
-                member_active = True if self.request.get("edActive", "yes").strip().lower() == "yes" else False
-                member_photo = self.request.get("edPhoto")
-
-                if op_member == "add":
-                    member = Member()
-                    member.active = member_active
-                    member.identified = False
-                    member.is_admin = False
-                    member.user_id = ""
-                else:
-                    member = Member.query(Member.dni == member_dni).get()
-                    if not member:
-                        self.redirect("/error?msg=member was not found")
-                        return
-
-                # Store in the database
-                if member_dni: member.dni = member_dni
-                if member_birth: member.birth = member_birth
-                if member_lic: member.lic = member_lic
-                if member_soc: member.soc = member_soc
-                if member_name: member.name = member_name
-                if member_surname: member.surname = member_surname
-                if member_comments: member.comments = member_comments
-                if member_photo: member.photo = images.resize(member_photo, 64, 64)
-
-                member.put()
-                time.sleep(1)
-            elif op_member == "delete":
-                member = Member.query(Member.dni == member_dni).get()
-                if member:
-                    member.key.delete()
-                    time.sleep(1)
-                else:
-                    self.redirect("/error?msg=member was not found")
-                    return
-            else:
-                self.redirect("/error?msg=operation on members not supported")
-                return
-        elif op_trial and op_trial != "nop":
+        if op_trial and op_trial != "nop":
             # Pick up trial info
             trial_name = self.request.get("edTrialName")
             trial_comments = self.request.get("edRemarks")
@@ -158,6 +91,8 @@ class AdminHandler(webapp2.RequestHandler):
             news_title = self.request.get("edTitle")
             news_body = self.request.get("edBody")
             news_url = self.request.get("edUrl")
+            news_photo = self.request.get("edPhotoForNews", "")
+            news_doc = self.request.get("edDocForNews", "")
 
             if op_news == "add":
                 news = News()
@@ -165,6 +100,8 @@ class AdminHandler(webapp2.RequestHandler):
                 if news_title: news.title = news_title
                 if news_body: news.body = news_body
                 if news_url: news.url = news_url
+                if news_photo: news.photo = ndb.Key(urlsafe=news_photo)
+                if news_doc: news.doc = ndb.Key(urlsafe=news_doc)
                 news.put()
                 time.sleep(1)
             elif op_news == "delete":
