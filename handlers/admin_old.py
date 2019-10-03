@@ -44,7 +44,6 @@ class AdminHandler(webapp2.RequestHandler):
 
     def post(self):
         op_news = self.request.get("edOpNews")
-        op_photo = self.request.get("edOpPhoto")
         op_doc = self.request.get("edOpDoc")
 
         if op_news and op_news != "nop":
@@ -77,31 +76,6 @@ class AdminHandler(webapp2.RequestHandler):
                 self.redirect("/error?msg=operation on news not supported")
                 return
 
-        elif op_photo and op_photo != "nop":
-            # Retrieve
-            photo_title = self.request.get("edPhotoTitle")
-            photo_tags = self.request.get("edPhotoTags")
-            photo_image = self.request.get("edPhotoImage")
-
-            if op_photo == "add":
-                photo = Photo()
-
-                if photo_title: photo.title = photo_title
-                if photo_tags: photo.tags = photo_tags.split(',')
-                if photo_image: photo.image = photo_image
-                photo.put()
-                time.sleep(1)
-            elif op_photo == "delete":
-                photo = Photo.query(Photo.title == photo_title).get()
-                if photo:
-                    photo.key.delete()
-                    time.sleep(1)
-                else:
-                    self.redirect("/error?msg=photo was not found")
-                    return
-            else:
-                self.redirect("/error?msg=operation on photo not supported")
-                return
         elif op_doc and op_doc != "nop":
             # Retrieve
             doc_title = self.request.get("edDocTitle")

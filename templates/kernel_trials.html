@@ -21,7 +21,7 @@
 
     <br/>
     <label for="edComments">Observaciones: </label>
-    <textarea cols="60" rows="10" id="edComments"></textarea>
+    <textarea cols="60" rows="10" id="edComments" name="edComments"></textarea>
 
     <br/>
     <input type="submit" value="Guardar">
@@ -32,16 +32,16 @@
     <table width="100%">
     {% for trial in trials %}
         <tr width="100%">
-            <td width="20%">
+            <td width="5%">
                 <a href="/admin/trial/delete?id={{ trial.key.urlsafe() }}">
                     <img width="16" height="16"
                          src="/res/delete.svg" style="background-color: orangered">
                 </a>
             </td>
-            <td width="20%">
+            <td width="10%">
                 {{ trial.date }}
             </td>
-            <td width="20%">
+            <td width="30%">
             {% if trial.poster %}
                 <img class="clsPhoto" width="64" height="64"
                      alt="{{ trial.name }}" title="{{ trial.name }}"
@@ -53,10 +53,10 @@
                      style="background-color: black">
             {% endif %}
             </td>
-            <td width="20%" id="tblItems">
+            <td width="10%" id="tblItems">
                 <b>{{ trial.name }}</b>
             </td>
-            <td width="30%">
+            <td width="45%">
                 <i>{{ trial.comments }}</i>
             </td>
         </tr>

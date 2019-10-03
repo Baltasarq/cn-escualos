@@ -1,0 +1,62 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvTitle"><b>Fotos</b></div>
+
+<h2>Nueva foto</h2>
+<form id="frmAddPhoto"
+      method="post"
+      action="/admin/photos"
+      enctype="multipart/form-data">
+
+    <label for="edTitle">Título: </label>
+    <input id="edTitle" name="edTitle" type="text" placeholder="título" required="required">
+
+    <br/>
+    <label for="edTags">Etiquetas: </label>
+    <input id="edTags" name="edTags" type="string" placeholder="tag1, tag2,... tagN">
+
+    <br/>
+    <label for="edImage">Foto (será redimensionada para una altura de 400px): </label>
+    <input id="edImage" name="edImage" type="file" accept="image/*">
+
+    <br/>
+    <input type="submit" value="Guardar">
+</form>
+
+<div id="dvItems">
+    <h2>Fotos</h2>
+    <table width="100%">
+    {% for photo in photos %}
+        <tr width="100%">
+            <td width="5%">
+                <a href="/admin/photo/delete?id={{ photo.key.urlsafe() }}">
+                    <img width="16" height="16"
+                         src="/res/delete.svg" style="background-color: orangered">
+                </a>
+            </td>
+            <td width="20%">
+                {{ photo.title }}
+            </td>
+            <td width="50%">
+            {% if photo.image %}
+                <img class="clsPhoto" width="64" height="64"
+                     alt="{{ photo.title }}" title="{{ photo.title }}"
+                     src="data:image/png;base64,{{ photo.image.encode('base64') }}">
+            {% else %}
+                <img class="clsPhoto" src="/res/unknown_member.svg"
+                     alt="No foto" title="No foto"
+                     height="64" width="64"
+                     style="background-color: black">
+            {% endif %}
+            </td>
+            <td width="25%" id="tblItems">
+                <b>{{ ",".join(photo.tags) }}</b>
+            </td>
+        </tr>
+    {% else %}
+        No hay fotos registradas.
+    {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

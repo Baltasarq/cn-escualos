@@ -155,6 +155,14 @@ handlers:
   script: handlers.admin.trial.delete.app
   login: admin
 
+- url: /admin/photos
+  script: handlers.admin.photos.app
+  login: admin
+
+- url: /admin/photo/delete
+  script: handlers.admin.photo.delete.app
+  login: admin
+
 - url: /admin/member/generate_csv
   script: handlers.admin.member.generate_csv.app
   login: admin
