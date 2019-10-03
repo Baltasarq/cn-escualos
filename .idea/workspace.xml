@@ -5,8 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/member/participation_record.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/member/participation_record.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/participation_record/member_participation/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/modify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/participation_record/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/modify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/participation_record.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/participation_record.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/edit_member_participation_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_member_participation_record.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/edit_participation_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_participation_record.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/member_participation_entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/member_participation_entry.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +62,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -224,7 +230,9 @@
       <workItem from="1569957717773" duration="401000" />
       <workItem from="1569988643818" duration="2686000" />
       <workItem from="1570000994805" duration="13899000" />
-      <workItem from="1570033181775" duration="933000" />
+      <workItem from="1570033181775" duration="1564000" />
+      <workItem from="1570036214325" duration="1025000" />
+      <workItem from="1570087030742" duration="5402000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>
@@ -235,15 +243,6 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -299,7 +298,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1570033606942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1570097825750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">

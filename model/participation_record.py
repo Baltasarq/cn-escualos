@@ -14,6 +14,7 @@ class MemberParticipation(ndb.Model):
     stays_for_lunch = ndb.BooleanProperty(default=False)
     payment = ndb.BlobProperty()
     comments = ndb.StringProperty(default="")
+    num_companions = ndb.IntegerProperty(default=0)
 
 
 class MemberTest(ndb.Model):

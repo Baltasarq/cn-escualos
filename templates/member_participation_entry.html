@@ -4,12 +4,17 @@
     {{ member.surname }}, {{ member.name }}
 </td>
 <td>
+    {%- if member_participation.num_companions > 0 -%}
+    +{{ member_participation.num_companions }} <i>pax</i>
+    {%- endif -%}
+</td>
+<td>
     {% if member_participation.payment %}
         <a href="/participation_record/member_participation/retrieve_payment?id={{ participation_record.key.urlsafe() }}&member_id={{ member_participation.member.urlsafe() }}">
             Resguardo
         </a>
     {% else %}
-        No disponible.
+        Sin resguardo.
     {% endif %}
 </td>
 <td>

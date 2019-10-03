@@ -88,39 +88,106 @@
         onsubmit="return chkTimes()"
         action="/participation_record/participant_per_test/modify?id={{ participation_record.key.urlsafe() }}&org=member">
 
-        <label for="edMemberPerTest">Miembro {{ usr.surname }}, {{ usr.name }}</label>
-        <select id="edMemberPerTest" name="edMemberPerTest" style="display: none">
-                <option value="{{ usr.key.urlsafe() }}" selected>{{ usr.surname }}, {{ usr.name }}</option>
-        </select>
+        <table width="100%">
 
-        <label for="edTest">Prueba </label>
-        <select id="edTest" name="edTest">
-            {% for test in competition.get_sorted_tests() %}
-                <option value="{{ test.uid }}">{{ test.__str__() }}</option>
-            {% endfor %}
-        </select>
+        <tr>
+            <td>
+                <label for="edMemberPerTest">Miembro {{ usr.surname }}, {{ usr.name }}</label>
+                <select id="edMemberPerTest" name="edMemberPerTest" style="display: none">
+                        <option value="{{ usr.key.urlsafe() }}" selected>{{ usr.surname }}, {{ usr.name }}</option>
+                </select>
+            </td>
+            <td>
+                <label for="edTest">Prueba </label>
+                <select id="edTest" name="edTest">
+                    {% for test in competition.get_sorted_tests() %}
+                        <option value="{{ test.uid }}">{{ test.__str__() }}</option>
+                    {% endfor %}
+                </select>
+            <td>
+        </tr>
 
-        <br/>
-        Marca
-        <input style="width: 80px" type="number" id="edHours" name="edHours" value="0" />
-        <label for="edHours">h</label>
+        <tr>
+            <td>
+                Marca
+            </td>
+            <td>
+                <input style="width: 80px" type="number" id="edHours" name="edHours" value="0" />
+                <label for="edHours">h</label>
 
-        <input style="width: 80px" type="number" id="edMinutes" name="edMinutes" value="0" />
-        <label for="edMinutes">'</label>
+                <input style="width: 80px" type="number" id="edMinutes" name="edMinutes" value="0" />
+                <label for="edMinutes">'</label>
 
-        <input style="width: 80px" type="number" id="edSeconds" name="edSeconds" value="0" />
-        <label for="edSeconds">"</label>
+                <input style="width: 80px" type="number" id="edSeconds" name="edSeconds" value="0" />
+                <label for="edSeconds">"</label>
 
-        <input style="width: 80px" type="number" id="edMillis" name="edMillis" value="0" />
-        <label for="edMillis">ms</label>
+                <input style="width: 80px" type="number" id="edMillis" name="edMillis" value="0" />
+                <label for="edMillis">ms</label>
+            </td>
+        </tr>
 
-        <br/>
-        <input type="submit" value="Guardar" />
+        <tr><td>
+            <input type="submit" value="Guardar" />
+        </td></tr>
     </form>
 
     <div id="dvError" style="display: none"></div>
 
     {% endif %}
+
+    <h2>Realizar inscripción</h2>
+    <form id="frmParticipantInParticipationRecord"
+      method="post" action="/participation_record/member_participation/modify?id={{ participation_record.key.urlsafe() }}&org=member"
+      enctype="multipart/form-data">
+
+        <table width="100%">
+
+        <tr>
+            <td>
+                <label for="edMember">Miembro: <b>{{ usr.surname }}, {{ usr.name }}</b></label>
+            </td>
+            <td>
+                <select id="edMember" name="edMember" style="display: none">
+                    <option value="{{ usr.key.urlsafe() }}" selected>{{ usr.surname }}, {{ usr.name }}</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="edLunch">Se queda a comer: </label>
+            </td>
+            <td>
+                <input type="checkbox" name="edLunch" id="edLunch" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="edCompanions">Acompañantes: </label>
+            </td>
+            <td>
+                <input type="number" id="edCompanions" name="edCompanions" min="0" value="0"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="edComments">Observaciones: </label></td>
+            <td><textarea id="edComments" name="edComments" cols="60"></textarea></td>
+        </tr>
+
+        <tr>
+            <td><label for="edPayment">Recibo de pago </label></td>
+            <td><input type="file" id="edPayment" name="edPayment"></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="Guardar" id="btSend" /></td>
+        </tr>
+
+        </table>
+    </form>
+
     <h2>Inscripción</h2>
     <table border="0" width="100%">
         <tr>
@@ -138,30 +205,6 @@
         {% endif %}
     </table>
 
-    <h2>Realizar inscripción</h2>
-    <form id="frmParticipantInParticipationRecord"
-      method="post" action="/participation_record/member_participation/modify?id={{ participation_record.key.urlsafe() }}&org=member"
-      enctype="multipart/form-data">
-
-        <label for="edMember">Miembro: {{ usr.surname }}, {{ usr.name }}</label>
-        <select id="edMember" name="edMember" style="display: none">
-            <option value="{{ usr.key.urlsafe() }}" selected>{{ usr.surname }}, {{ usr.name }}</option>
-        </select>
-
-        <input type="checkbox" name="edLunch" id="edLunch" />
-        <label for="edLunch">Se queda a comer </label>
-
-        <br/>
-        <label for="edComments">Observaciones: </label>
-        <textarea id="edComments" name="edComments" cols="60"></textarea>
-
-        <br/>
-        <label for="edPayment">Recibo de pago </label>
-        <input type="file" id="edPayment" name="edPayment">
-
-        <br/>
-        <input type="submit" value="Guardar" id="btSend" />
-    </form>
 </div>
 
 {% endblock %}

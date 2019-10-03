@@ -25,8 +25,7 @@ class MemberParticipationRecordHandler(webapp2.RequestHandler):
             # Participation record data
             participation_record = ParticipationRecord.retrieve_participation_record(self)
             competition = participation_record.competition.get()
-            tests = competition.tests
-            tests.sort(key=lambda test: (test.style_id * 1000000) + test.distance)
+            tests = competition.get_sorted_tests()
 
             # Member's participation
             member_participation = None

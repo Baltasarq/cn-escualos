@@ -31,13 +31,19 @@ class ModifyParticipationRecordHandler(webapp2.RequestHandler):
 
             # Competition stats
             total_participants = len(participation_record.participants)
-            num_lunchers = len(
-                [participant
-                 for participant in participation_record.participants if participant.stays_for_lunch])
+            num_lunchers = 0
+            num_companions = 0
+
+            for participant in participation_record.participants:
+                num_companions += participant.num_companions
+
+                if participant.stays_for_lunch:
+                    num_lunchers += 1 + participant.num_companions
+
+            total_pax = total_participants + num_companions
 
             # Tests
-            tests = competition.tests
-            tests.sort(key=lambda test: (test.style_id * 100000) + test.distance)
+            tests = competition.get_sorted_tests()
             participants_per_test = {}
 
             for test in tests:
@@ -56,7 +62,9 @@ class ModifyParticipationRecordHandler(webapp2.RequestHandler):
                 "participation_record": participation_record,
                 "participants_per_test": participants_per_test,
                 "num_lunchers": num_lunchers,
-                "total_participants": total_participants
+                "total_participants": total_participants,
+                "num_companions": num_companions,
+                "total_pax": total_pax
             }
 
             jinja = jinja2.get_jinja2(app=self.app)

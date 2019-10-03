@@ -6,14 +6,15 @@
 <a href="https://www.fegan.org/marks/" target="_blank"><img alt="Marcas FEGAN" height="24px" width="24px" title="Marcas FEGAN" class="styled-button" src="/res/chrono.svg"/> Marcas FEGAN</a>
 <div class="clsTitle"><b>Registro de participación</b></div>
 <div id="dvEditParticipationRecord">
-    <p />
+    <h2>Competición</h2>
     {{ competition.date }} <a href="/competition/modify?id={{ competition.key.urlsafe() }}"><b>{{ competition.name }}</b></a>
-    <br/><i>{{ competition.where }}</i>
-        <ul>
-            <li>Miembros del club que participan: {{ total_participants }}</li>
-            <li>De ellos, se quedan a comer: {{ num_lunchers }}</li>
+    <p></p><i>{{ competition.where }}</i>
+        <br/><b>Estadísticas</b><ul>
+            <li>{{ total_participants }} miembros del club participan,</li>
+            <li>+{{ num_companions }} acompañantes,</li>
+            <li>{{ num_lunchers }} se quedan a comer,</li>
+            <li>y {{ total_pax }} es el total de personas que asisten a la prueba.</li>
         </ul>
-    <p/>
 
     <h2>Participantes por prueba</h2>
     <table border="0" width="100%">
@@ -46,38 +47,53 @@
         method="post"
         action="/participation_record/participant_per_test/modify?id={{ participation_record.key.urlsafe() }}">
 
-        <label for="edMemberPerTest">Miembro </label>
-        <select id="edMemberPerTest" name="edMemberPerTest">
-            {% for participant_entry in participation_record.participants %}
-                {% set member = participant_entry.member.get() %}
+        <table width="100%">
 
-                <option value="{{ member.key.urlsafe() }}">{{ member.surname }}, {{ member.name }}</option>
-            {% endfor %}
-        </select>
+        <tr>
+            <td>
+                <label for="edMemberPerTest">Miembro </label>
+                <select id="edMemberPerTest" name="edMemberPerTest">
+                    {% for participant_entry in participation_record.participants %}
+                        {% set member = participant_entry.member.get() %}
 
-        <label for="edTest">Prueba </label>
-        <select id="edTest" name="edTest">
-            {% for test in competition.get_sorted_tests() %}
-                <option value="{{ test.uid }}">{{ test.__str__() }}</option>
-            {% endfor %}
-        </select>
+                        <option value="{{ member.key.urlsafe() }}">{{ member.surname }}, {{ member.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <label for="edTest">Prueba </label>
+                <select id="edTest" name="edTest">
+                    {% for test in competition.get_sorted_tests() %}
+                        <option value="{{ test.uid }}">{{ test.__str__() }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
 
-        <br/>
-        Marca
-        <input style="width: 80px" type="number" id="edHours" name="edHours" value="0" />
-        <label for="edHours">h</label>
+        <tr>
+            <td>
+                Marca
+            </td>
+            <td>
+                <input style="width: 80px" type="number" id="edHours" name="edHours" value="0" />
+                <label for="edHours">h</label>
 
-        <input style="width: 80px" type="number" id="edMinutes" name="edMinutes" value="0" />
-        <label for="edMinutes">'</label>
+                <input style="width: 80px" type="number" id="edMinutes" name="edMinutes" value="0" />
+                <label for="edMinutes">'</label>
 
-        <input style="width: 80px" type="number" id="edSeconds" name="edSeconds" value="0" />
-        <label for="edSeconds">"</label>
+                <input style="width: 80px" type="number" id="edSeconds" name="edSeconds" value="0" />
+                <label for="edSeconds">"</label>
 
-        <input style="width: 80px" type="number" id="edMillis" name="edMillis" value="0" />
-        <label for="edMillis">ms</label>
+                <input style="width: 80px" type="number" id="edMillis" name="edMillis" value="0" />
+                <label for="edMillis">ms</label>
+            </td>
+        </tr>
 
-        <br/>
-        <input type="submit" value="Guardar" />
+            <tr><td>
+                <input type="submit" value="Guardar" />
+            </td></tr>
+
+        </table>
     </form>
 
     <h2>Participantes</h2>
@@ -101,27 +117,61 @@
       method="post" action="/participation_record/member_participation/modify?id={{ participation_record.key.urlsafe() }}"
       enctype="multipart/form-data">
 
-        <label for="edMember">Miembro </label>
-        <select id="edMember" name="edMember">
-            {% for member in members %}
-                <option value="{{ member.key.urlsafe() }}">{{ member.surname }}, {{ member.name }}</option>
-            {% endfor %}
-        </select>
+        <table width="100%">
 
-        <br/>
-        <input type="checkbox" name="edLunch" id="edLunch" />
-        <label for="edLunch">Se queda a comer </label>
+        <tr>
+            <td><label for="edMember">Miembro </label></td>
+            <td>
+                <select id="edMember" name="edMember">
+                    {% for member in members %}
+                        <option value="{{ member.key.urlsafe() }}">{{ member.surname }}, {{ member.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
 
-        <br/>
-        <label for="edComments">Observaciones: </label>
-        <textarea id="edComments" name="edComments" cols="60"></textarea>
+        <tr>
+            <td>
+                <label for="edLunch">Se queda a comer </label>
+            </td>
+            <td>
+                <input type="checkbox" name="edLunch" id="edLunch" />
+            </td>
+        </tr>
 
-        <br/>
-        <label for="edPayment">Recibo de pago </label>
-        <input type="file" id="edPayment" name="edPayment">
+        <tr>
+            <td>
+                <label for="edCompanions">Número de acompañantes: </label>
+            </td>
+            <td>
+                <input type="number" name="edCompanions" id="edCompanions" min="0" value="0" />
+            </td>
+        </tr>
 
-        <br/>
-        <input type="submit" value="Guardar" id="btSend" />
+        <tr>
+            <td>
+                <label for="edComments">Observaciones: </label>
+            </td>
+            <td>
+                <textarea id="edComments" name="edComments" cols="60"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="edPayment">Recibo de pago </label>
+            </td>
+            <td>
+                <input type="file" id="edPayment" name="edPayment">
+            </td>
+        </tr>
+
+        <tr><td>
+            <input type="submit" value="Guardar" id="btSend" />
+        </td></tr>
+
+        </table>
+
     </form>
 </div>
 

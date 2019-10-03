@@ -29,7 +29,13 @@ class ModifyMemberParticipationForParticipationRecordHandler(webapp2.RequestHand
             member_key = self.request.get("edMember", "")
             str_stays_for_lunch = self.request.get("edLunch", "off")
             payment_blob = self.request.get("edPayment", None)
-            comments = self.request.get("edComments", "")
+            comments = self.request.get("edComments", "").strip()
+            str_companions = self.request.get("edCompanions", "0")
+
+            try:
+                num_companions = int(str_companions)
+            except ValueError:
+                num_companions = 0
 
             if member_key:
                 member_key = ndb.Key(urlsafe=member_key)
@@ -49,12 +55,16 @@ class ModifyMemberParticipationForParticipationRecordHandler(webapp2.RequestHand
                     participation_record.participants.append(member_participation)
 
                 member_participation.stays_for_lunch = (str_stays_for_lunch == "on")
+                member_participation.num_companions = num_companions
 
                 if payment_blob:
                     member_participation.payment = payment_blob
 
                 if comments:
-                    member_participation.comments = comments
+                    if comments == "-":
+                        member_participation.comments = ""
+                    else:
+                        member_participation.comments = comments
 
                 participation_record.put()
                 time.sleep(1)
