@@ -1,0 +1,66 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvTitle"><b>Pruebas organizadas por el club</b></div>
+<div id="dvItems">
+    <h2>Pruebas</h2>
+    <table width="100%">
+    {% for trial in trials %}
+        <tr width="100%">
+            <td width="20%">
+                <a href="/admin/trial/delete?id={{ trial.key.urlsafe() }}">
+                    <img width="16" height="16"
+                         src="/res/delete.svg" style="background-color: orangered">
+                </a>
+            </td>
+            <td width="20%">
+                {{ trial.date }}
+            </td>
+            <td width="20%">
+            {% if trial.poster %}
+                <img class="clsPhoto" width="64" height="64"
+                     alt="{{ trial.name }}" title="{{ trial.name }}"
+                     src="data:image/png;base64,{{ trial.poster.encode('base64') }}">
+            {% else %}
+                <img class="clsPhoto" src="/res/unknown_member.svg"
+                     alt="No foto" title="No foto"
+                     height="64" width="64"
+                     style="background-color: black">
+            {% endif %}
+            </td>
+            <td width="20%" id="tblItems">
+                <b>{{ trial.name }}</b>
+            </td>
+            <td width="30%">
+                <i>{{ trial.comments }}</i>
+            </td>
+        </tr>
+    {% else %}
+        No hay pruebas registradas.
+    {% endfor %}
+    </table>
+    <h2>Nueva prueba</h2>
+    <form id="frmAddTrial"
+          method="post"
+          action="/admin/trials"
+          enctype="multipart/form-data">
+
+        <label for="edName">Nombre: </label>
+        <input id="edName" name="edName" type="text" placeholder="nombre" required="required">
+
+        <br/>
+        <label for="edDate">Fecha: </label>
+        <input id="edDate" name="edDate" type="date">
+
+        <br/>
+        <label for="edPoster">Póster (será redimensionado para una altura de 400px): </label>
+        <input id="edPoster" name="edPoster" type="file" accept="image/*">
+
+        <br/>
+        <label for="edComments">Observaciones: </label>
+        <textarea cols="60" rows="10" id="edComments"></textarea>
+
+        <br/>
+        <input type="submit" value="Guardar">
+    </form>
+</div>
+{% endblock %}

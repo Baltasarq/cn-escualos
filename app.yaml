@@ -143,6 +143,18 @@ handlers:
   script: handlers.admin.patreons.app
   login: admin
 
+- url: /admin/patreon/delete
+  script: handlers.admin.patreon.delete.app
+  login: admin
+
+- url: /admin/trials
+  script: handlers.admin.trials.app
+  login: admin
+
+- url: /admin/trial/delete
+  script: handlers.admin.trial.delete.app
+  login: admin
+
 - url: /admin/member/generate_csv
   script: handlers.admin.member.generate_csv.app
   login: admin

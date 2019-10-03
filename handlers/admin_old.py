@@ -43,50 +43,11 @@ class AdminHandler(webapp2.RequestHandler):
         return
 
     def post(self):
-        op_trial = self.request.get("edOpTrial")
         op_news = self.request.get("edOpNews")
         op_photo = self.request.get("edOpPhoto")
         op_doc = self.request.get("edOpDoc")
 
-        if op_trial and op_trial != "nop":
-            # Pick up trial info
-            trial_name = self.request.get("edTrialName")
-            trial_comments = self.request.get("edRemarks")
-            txt_date = self.request.get("edDate", datetime.date.today().isoformat())
-            trial_date = datetime.datetime.strptime(txt_date, "%Y-%m-%d")
-
-            # Doit
-            if op_trial == "add" or op_trial == "modify":
-                # Retrieve
-                trial_poster = self.request.get("edPoster")
-
-                if op_trial == "add":
-                    trial = Trial()
-                else:
-                    trial = Trial.query(Trial.date == trial_date).get()
-                    if not trial:
-                        self.redirect("/error?msg=trial was not found")
-                        return
-
-                if trial_name: trial.name = trial_name
-                if trial_date: trial.date = trial_date
-                if trial_comments: trial.comments = trial_comments
-                if trial_poster: trial.poster = trial_poster
-                trial.put()
-                time.sleep(1)
-            elif op_trial == "delete":
-                member = Trial.query(Trial.date == trial_date).get()
-                if member:
-                    member.key.delete()
-                    time.sleep(1)
-                else:
-                    self.redirect("/error?msg=trial was not found")
-                    return
-            else:
-                self.redirect("/error?msg=operation on trials not supported")
-                return
-
-        elif op_news and op_news != "nop":
+        if op_news and op_news != "nop":
             # Retrieve
             news_title = self.request.get("edTitle")
             news_body = self.request.get("edBody")
