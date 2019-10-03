@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170b234-0101-4c18-8245-a36b7783013b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/handlers/admin/trial/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/admin/trial/delete.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/admin/trials.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/trophy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/kernel_trials.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/admin_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin_old.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin_old.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_old.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/kernel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kernel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kernel_trials.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kernel_trials.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patreons.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patreons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -237,7 +227,7 @@
       <workItem from="1570036214325" duration="1025000" />
       <workItem from="1570087030742" duration="5585000" />
       <workItem from="1570109045797" duration="23000" />
-      <workItem from="1570109096017" duration="6459000" />
+      <workItem from="1570109096017" duration="6869000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>

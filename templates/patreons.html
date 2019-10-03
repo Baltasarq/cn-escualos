@@ -1,6 +1,28 @@
 {% extends "skeleton.html" %}
 {% block content %}
 <div id="dvTitle"><b>Patrocinadores</b></div>
+
+<h2>Nuevo patrocinador</h2>
+<form id="frmAddPatreon"
+      method="post"
+      action="/admin/patreons"
+      enctype="multipart/form-data">
+
+    <label for="edPhoto">Imagen comercial: </label>
+    <input id="edPhoto" name="edPhoto" type="file" accept="image/*">
+
+    <br/>
+    <label for="edName">Name: </label>
+    <input id="edName" name="edName" type="text" placeholder="nombre" required="required">
+
+    <br/>
+    <label for="edUrl">URL: </label>
+    <input id="edUrl" name="edUrl" type="text" placeholder="URL" value="htp://">
+
+    <br/>
+    <input type="submit" value="Guardar">
+</form>
+
 <div id="dvItems">
     <h2>Patrocinadores</h2>
     <table width="100%">
@@ -40,25 +62,6 @@
         No hay patrocinadores registrados.
     {% endfor %}
     </table>
-    <h2>Nuevo patrocinador</h2>
-    <form id="frmAddPatreon"
-          method="post"
-          action="/admin/patreons"
-          enctype="multipart/form-data">
 
-        <label for="edPhoto">Imagen comercial: </label>
-        <input id="edPhoto" name="edPhoto" type="file" accept="image/*">
-
-        <br/>
-        <label for="edName">Name: </label>
-        <input id="edName" name="edName" type="text" placeholder="nombre" required="required">
-
-        <br/>
-        <label for="edUrl">URL: </label>
-        <input id="edUrl" name="edUrl" type="text" placeholder="URL" value="htp://">
-
-        <br/>
-        <input type="submit" value="Guardar">
-    </form>
 </div>
 {% endblock %}

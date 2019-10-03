@@ -1,6 +1,32 @@
 {% extends "skeleton.html" %}
 {% block content %}
 <div id="dvTitle"><b>Pruebas organizadas por el club</b></div>
+
+<h2>Nueva prueba</h2>
+<form id="frmAddTrial"
+      method="post"
+      action="/admin/trials"
+      enctype="multipart/form-data">
+
+    <label for="edName">Nombre: </label>
+    <input id="edName" name="edName" type="text" placeholder="nombre" required="required">
+
+    <br/>
+    <label for="edDate">Fecha: </label>
+    <input id="edDate" name="edDate" type="date">
+
+    <br/>
+    <label for="edPoster">Póster (será redimensionado para una altura de 400px): </label>
+    <input id="edPoster" name="edPoster" type="file" accept="image/*">
+
+    <br/>
+    <label for="edComments">Observaciones: </label>
+    <textarea cols="60" rows="10" id="edComments"></textarea>
+
+    <br/>
+    <input type="submit" value="Guardar">
+</form>
+
 <div id="dvItems">
     <h2>Pruebas</h2>
     <table width="100%">
@@ -38,29 +64,6 @@
         No hay pruebas registradas.
     {% endfor %}
     </table>
-    <h2>Nueva prueba</h2>
-    <form id="frmAddTrial"
-          method="post"
-          action="/admin/trials"
-          enctype="multipart/form-data">
 
-        <label for="edName">Nombre: </label>
-        <input id="edName" name="edName" type="text" placeholder="nombre" required="required">
-
-        <br/>
-        <label for="edDate">Fecha: </label>
-        <input id="edDate" name="edDate" type="date">
-
-        <br/>
-        <label for="edPoster">Póster (será redimensionado para una altura de 400px): </label>
-        <input id="edPoster" name="edPoster" type="file" accept="image/*">
-
-        <br/>
-        <label for="edComments">Observaciones: </label>
-        <textarea cols="60" rows="10" id="edComments"></textarea>
-
-        <br/>
-        <input type="submit" value="Guardar">
-    </form>
 </div>
 {% endblock %}
