@@ -24,8 +24,7 @@
         const edSurname = document.getElementById( "edSurname" );
         const edName = document.getElementById( "edName" );
         const edBirth = document.getElementById( "edBirth" );
-        const edSoc = document.getElementById( "edSoc" );
-        const edLicense = document.getElementById( "edLicense" );
+        const edLic = document.getElementById( "edLic" );
         let toret = true;
 
         hideErrorReporting();
@@ -45,25 +44,11 @@
             toret = false;
         }
 
-        if ( edSoc.value.trim() === "" ) {
-            showErrorMsg( "Se necesita un número de socio" );
-            toret = false;
-        } else {
-            const soc = parseInt( edSoc.value );
-
-            if ( isNaN( soc )
-              || soc < 0 )
-            {
-                showErrorMsg( "Número de socio inválido" );
-                toret = false;
-            }
-        }
-
-        if ( edLicense.value.trim() === "" ) {
+        if ( edLic.value.trim() === "" ) {
             showErrorMsg( "Se necesita un número de licencia" );
             toret = false;
         } else {
-            const lic = parseInt( edLicense.value );
+            const lic = parseInt( edLic.value );
 
             if ( isNaN( lic )
               || lic < 0 )
@@ -200,7 +185,7 @@
                     {% endif %}
                     <td>
                         <label for="edLic">Número de licencia: </label>
-                        <input type="number" id="edLic" name="edLic" value="{{ usr.lic }}">
+                        <input type="number" id="edLic" name="edLic" min="0" value="{{ usr.lic }}">
                     </td>
                 </tr>
                 <tr>

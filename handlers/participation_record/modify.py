@@ -50,6 +50,10 @@ class ModifyParticipationRecordHandler(webapp2.RequestHandler):
                 participants_per_test[test.uid] = \
                     [x for x in participation_record.participants_per_test if x.test_uid == test.uid]
 
+            # Sorted participants
+            participants = participation_record.participants
+            participants.sort(key=lambda p: p.member.get().surname)
+
             # Render answer
             data = {
                 "info": AppInfo,
@@ -59,6 +63,7 @@ class ModifyParticipationRecordHandler(webapp2.RequestHandler):
                 "tests": tests,
                 "competition": competition,
                 "members": Member.query().order(Member.surname).order(Member.name).fetch(),
+                "participants": participants,
                 "participation_record": participation_record,
                 "participants_per_test": participants_per_test,
                 "num_lunchers": num_lunchers,

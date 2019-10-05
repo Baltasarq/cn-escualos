@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170b234-0101-4c18-8245-a36b7783013b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/handlers/admin/photo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/admin/photo/delete.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/admin/photos.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/kernel_photos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/admin_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/admin_old.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin_old.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_old.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/kernel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kernel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/kernel_trials.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kernel_trials.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/ensure_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/ensure_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/participation_record/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/modify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/member.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/member.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_participation_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_participation_record.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kernel_members.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kernel_members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -235,7 +234,10 @@
       <workItem from="1570036214325" duration="1025000" />
       <workItem from="1570087030742" duration="5585000" />
       <workItem from="1570109045797" duration="23000" />
-      <workItem from="1570109096017" duration="8990000" />
+      <workItem from="1570109096017" duration="9166000" />
+      <workItem from="1570256192679" duration="3184000" />
+      <workItem from="1570259979924" duration="1659000" />
+      <workItem from="1570298337207" duration="274000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>
@@ -301,7 +303,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1570109129590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1570298567885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">

@@ -16,7 +16,7 @@ class EnsureLoginHandler(webapp2.RequestHandler):
             if users.is_current_user_admin():
                 Member.set_admin()
             else:
-                return self.redirect("/info?msg=El usuario no es miembro.")
+                return Member.show_error_unrecognized_usr(self)
 
         return self.redirect("/")
 

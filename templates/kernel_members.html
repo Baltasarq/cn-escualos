@@ -1,6 +1,113 @@
 {% extends "skeleton.html" %}
 {% block content %}
 
+<script type="application/javascript">
+
+        function hideErrorReporting()
+    {
+        const dvError = document.getElementById( "dvError" );
+
+        dvError.style.display = "none";
+    }
+
+    function showErrorMsg(msg)
+    {
+        const dvError = document.getElementById( "dvError" );
+
+        dvError.style.display = "block";
+        dvError.style.backgroundColor = "red";
+        dvError.style.color = "white";
+        dvError.innerHTML = "<b>" + msg + "</b>"
+    }
+
+    function chk_member_data()
+    {
+        const edDNI = document.getElementById( "edDNI" );
+        const edSurname = document.getElementById( "edSurname" );
+        const edName = document.getElementById( "edName" );
+        const edEmail = document.getElementById( "edEmail" );
+        const edBirth = document.getElementById( "edBirth" );
+        const edLic = document.getElementById( "edLic" );
+        const edSoc = document.getElementById( "edSoc" );
+        let toret = true;
+
+        hideErrorReporting();
+
+        if ( edDNI.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un DNI" );
+            toret = false;
+        }
+
+        if ( edEmail.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un email" );
+            toret = false;
+        }
+
+        if ( edSurname.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un apellido" );
+            toret = false;
+        }
+
+        if ( edName.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un nombre" );
+            toret = false;
+        }
+
+        if ( edLic.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un número de licencia" );
+            toret = false;
+        } else {
+            const lic = parseInt( edLic.value );
+
+            if ( isNaN( lic )
+              || lic < 0 )
+            {
+                showErrorMsg( "Número de licencia inválido" );
+                toret = false;
+            }
+        }
+
+        if ( edSoc.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un número de socio" );
+            toret = false;
+        } else {
+            const soc = parseInt( edSoc.value );
+
+            if ( isNaN( soc )
+              || soc < 0 )
+            {
+                showErrorMsg( "Número de socio inválido" );
+                toret = false;
+            }
+        }
+
+        if ( edBirth.value.trim() === "" ) {
+            showErrorMsg( "Se necesita un año de nacimiento" );
+            toret = false;
+        } else {
+            const birth_parts = edBirth.value.trim().split( "-" ).map( x => parseInt( x, 10 ) );
+
+            for(let i = 0; i < birth_parts.length; ++i) {
+                if ( isNaN( birth_parts[ i ] ) ) {
+                    showErrorMsg( "Fecha de nacimiento inválida" );
+                    toret = false;
+                }
+            }
+
+            if ( birth_parts[ 0 ] < 1900
+              || birth_parts[ 1 ] > 12
+              || birth_parts[ 2 ] > 31 )
+            {
+                showErrorMsg( "Fecha de nacimiento imposible: " + edBirth.value );
+                toret = false;
+            }
+        }
+
+        return toret;
+    }
+
+</script>
+
 <a href="/admin/member/generate_csv">
     <img src="/res/document.svg" height="32px" width="32px" class="styled-button"
          alt="Descargar CSV" title="Descargar CSV"/>
@@ -69,11 +176,11 @@
     <tr>
         <td>
             <label for="edLic">Número de licencia: </label>
-            <input type="number" id="edLic" name="edLic" value="{{ chosen_usr.lic }}">
+            <input type="number" id="edLic" name="edLic" min="0" value="{{ chosen_usr.lic }}">
         </td>
         <td>
             <label for="edSoc">Número de socio: </label>
-            <input type="number" id="edSoc" name="edSoc" value="{{ chosen_usr.soc }}">
+            <input type="number" id="edSoc" name="edSoc" min="0" value="{{ chosen_usr.soc }}">
         </td>
     </tr>
     <tr>
@@ -96,6 +203,9 @@
     </table>
     <input type="submit" value="Guardar" id="btSend" />
 </form>
+
+<p/>
+<div id="dvError"></div>
 
 <p/>
 <div class="clsTitle"><b>Miembros</b></div>

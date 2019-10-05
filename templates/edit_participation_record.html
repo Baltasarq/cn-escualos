@@ -98,7 +98,7 @@
 
     <h2>Participantes</h2>
     <table border="0" width="100%">
-        {% for member_participation in participation_record.participants %}
+        {% for member_participation in participants %}
             <tr>
                 <td>
                     <a href="/participation_record/member_participation/delete?id={{ participation_record.key.urlsafe() }}&member_id={{ member_participation.member.urlsafe() }}">

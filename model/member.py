@@ -61,7 +61,8 @@ class Member(ndb.Model):
         gae_usr = users.get_current_user()
 
         if gae_usr:
-            toret = Member.query(Member.email == gae_usr.email()).get()
+            gae_usr_email = gae_usr.email().strip().lower()
+            toret = Member.query(Member.email == gae_usr_email).get()
 
             if toret:
                 toret.gae_usr = gae_usr
@@ -73,29 +74,28 @@ class Member(ndb.Model):
         gae_usr = users.get_current_user()
         usr_name = "anonymous" if not gae_usr else gae_usr.email()
 
-        handler.redirect("/error?msg=Usuario no reconocido: " + usr_name)
-        return
+        return handler.redirect("/error?msg=Usuario no reconocido: '" + usr_name + "'")
 
     @staticmethod
     def assign_data(member, request):
         # Retrieve data
         member_dni = request.get("edDNI", "").strip().upper()
         member_birth = request.get("edBirth", "2001-01-01")
-        member_surname = request.get("edSurname", "")
-        member_name = request.get("edName", "")
+        member_surname = request.get("edSurname", "").strip()
+        member_name = request.get("edName", "").strip()
         member_lic = gentools.int_from_str(request.get("edLic", "-1"))
-        member_soc = gentools.int_from_str(request.get("edSoc", "-1"))
-        member_comments = request.get("edComments", "")
+        member_soc = gentools.int_from_str(request.get("edSoc", str(member.soc)))
+        member_comments = request.get("edComments", "").strip()
         member_photo = request.get("edPhoto", None)
         member_active = request.get("edActive", "no")
-        member_email = request.get("edEmail", "")
+        member_email = request.get("edEmail", str(member.email)).strip().lower()
 
         if (not member_dni
          or not member_email
          or not member_name
          or not member_surname
          or not member_soc):
-            raise Exception("Missing data creating/modifying member.")
+            raise Exception("Missing or wrong data creating/modifying member.")
 
         # Store
         try:
@@ -106,7 +106,7 @@ class Member(ndb.Model):
         if member_dni: member.dni = member_dni
         if member_birth: member.birth = datetime.strptime(member_birth, "%Y-%m-%d")
         if member_lic >= 0: member.lic = member_lic
-        if member_soc >= 0: member.lic = member_lic
+        if member_soc >= 0: member.soc = member_soc
         if member_name: member.name = member_name
         if member_surname: member.surname = member_surname
         if member_comments: member.comments = member_comments
