@@ -53,7 +53,7 @@
             <td>
                 <label for="edMemberPerTest">Miembro </label>
                 <select id="edMemberPerTest" name="edMemberPerTest">
-                    {% for participant_entry in participation_record.participants %}
+                    {% for participant_entry in participants %}
                         {% set member = participant_entry.member.get() %}
 
                         <option value="{{ member.key.urlsafe() }}">{{ member.surname }}, {{ member.name }}</option>
