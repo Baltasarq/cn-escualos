@@ -10,7 +10,7 @@
 </td>
 <td>
     {% if member_participation.payment %}
-        <a href="/participation_record/member_participation/retrieve_payment?id={{ participation_record.key.urlsafe() }}&member_id={{ member_participation.member.urlsafe() }}">
+        <a href="/participation_record/member_participation/retrieve_payment?id={{member_participation.payment.urlsafe()}}">
             Resguardo
         </a>
     {% else %}

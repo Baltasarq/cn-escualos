@@ -5,6 +5,8 @@
 import webapp2
 from google.appengine.ext import ndb
 
+from model.document import Document
+
 
 class DocServerHandler(webapp2.RequestHandler):
     def get(self):
@@ -15,10 +17,14 @@ class DocServerHandler(webapp2.RequestHandler):
             return
 
         # Retrieve the document from the datastore
-        doc = ndb.Key(urlsafe=id).get()
+        try:
+            doc = ndb.Key(urlsafe=id).get()
+        except:
+            self.redirect("/error?msg='error retrieving document with id: '" + id + "'")
+            return
 
         if not doc:
-            self.redirect("/error?msg='document not found with id: ' + id")
+            self.redirect("/error?msg='document not found with id: '" + id + "'")
             return
 
         # Return the requested document

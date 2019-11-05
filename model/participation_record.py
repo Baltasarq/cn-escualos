@@ -9,10 +9,15 @@ from model.member import Member
 from model.competition import Competition
 
 
+class ParticipationRecordPayment(ndb.Model):
+    participation_record = ndb.KeyProperty(kind="ParticipationRecord", required=True, indexed=True)
+    payment = ndb.BlobProperty()
+
+
 class MemberParticipation(ndb.Model):
     member = ndb.KeyProperty(kind=Member, required=True, indexed=True)
     stays_for_lunch = ndb.BooleanProperty(default=False)
-    payment = ndb.BlobProperty()
+    payment = ndb.KeyProperty(kind=ParticipationRecordPayment, indexed=True)
     comments = ndb.StringProperty(default="")
     num_companions = ndb.IntegerProperty(default=0)
 
@@ -42,7 +47,7 @@ class ParticipationRecord(ndb.Model):
         toret = None
 
         for participant_per_test in self.participants_per_test:
-            if (participant_per_test.uid == member_test_uid):
+            if participant_per_test.uid == member_test_uid:
                 toret = participant_per_test
                 break
 
@@ -100,6 +105,12 @@ class ParticipationRecord(ndb.Model):
         self.participants.remove(participant)
 
         return
+
+    def remove_payments(self):
+        payment_keys = ParticipationRecordPayment\
+                            .query(ParticipationRecordPayment.participation_record == self.key)\
+                            .fetch(keys_only=True)
+        ndb.delete_multi(payment_keys)
 
     @staticmethod
     def retrieve_participation_record(req):

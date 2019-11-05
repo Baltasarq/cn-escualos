@@ -28,7 +28,7 @@ class AddCompetitionHandler(webapp2.RequestHandler):
                 name="Comp",
                 type="Jornada",
                 where="Ourense",
-                map_position="http://maps.google.com/",
+                map_position="",
                 comments=""
             )
 

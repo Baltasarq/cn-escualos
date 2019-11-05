@@ -33,6 +33,7 @@ class DeleteCompetitionHandler(webapp2.RequestHandler):
                 participation_record = ParticipationRecord.query(ParticipationRecord.competition == competition.key).get()
 
                 if participation_record:
+                    participation_record.remove_payments()
                     participation_record.key.delete()
             except:
                 logging.error("ERROR: Participation record was not found for competition: " + str(competition_key))

@@ -3,4 +3,11 @@
     <br/><i>{{ competition.type }}</i>
 </td>
 <td width="20%">{{ competition.where }}</td>
-<td width="10%"><b><a target="_blank" href="{{ competition.map_position }}">&gt;&gt;&gt;</a></b></td>
+<td width="10%">
+    {% if competition.map_position %}
+        <a target="_blank" href="{{ competition.map_position }}">
+            <img height="32px" width="32px" src="/res/map-target.svg" /></a>
+    {% else %}
+        &nbsp;
+    {% endif %}
+</td>

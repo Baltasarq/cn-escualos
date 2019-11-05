@@ -48,15 +48,18 @@
 <a href="/member/open_competitions"><img alt="Volver a competiciones abiertas" height="24px" width="24px" title="Volver a competiticiones abiertas" class="styled-button" src="/res/back.svg"/></a>
 <a href="/member/record/show_all" target="_blank"><img alt="Marcas Escualos" height="24px" width="24px" title="Marcas Escualos" class="styled-button" src="/res/chrono.svg"/> Marcas Escualos</a>
 <a href="https://www.fegan.org/marks/" target="_blank"><img alt="Marcas FEGAN" height="24px" width="24px" title="Marcas FEGAN" class="styled-button" src="/res/chrono.svg"/> Marcas FEGAN</a>
-<div class="clsTitle"><b>Registro de participación</b></div>
-<div id="dvEditParticipationRecord">
-    <p />
-    {{ competition.date }} <b>{{ competition.name }}</b>
-    <br/><i>{{ competition.where }}</i>
-    <p/>
+<div class="clsTitle"><b>Registro de participación personal</b></div>
+    <div id="dvEditParticipationRecord">
+    <p>
+        {{ competition.date }} <b>{{ competition.name }}</b>
+        <br/><i>{{ competition.where }}</i>
+        {% if competition.comments %}
+            <p>{{ competition.comments }}</p>
+        {% endif %}
+    </p>
 
     {% if member_participation %}
-    <h2>Participación en pruebas</h2>
+    <div class="clsSubtitle"><b>Participación en pruebas</b></div>
     <table border="0" width="100%">
         {% for test in tests %}
             {% set this_participants_per_test =  member_participation_in_tests[test.uid] %}
@@ -82,7 +85,7 @@
         {% endfor %}
     </table>
 
-    <h2>Nueva participación en prueba</h2>
+    <h3>Realizar inscripción en pruebas</h3>
     <form id="frmParticipantPerTestInParticipationRecord"
         method="post"
         onsubmit="return chkTimes()"
@@ -129,13 +132,14 @@
         <tr><td>
             <input type="submit" value="Guardar" />
         </td></tr>
+        </table>
     </form>
 
     <div id="dvError" style="display: none"></div>
 
     {% endif %}
 
-    <h2>Realizar inscripción</h2>
+    <div class="clsSubtitle"><b>Realizar inscripción</b></div>
     <form id="frmParticipantInParticipationRecord"
       method="post" action="/participation_record/member_participation/modify?id={{ participation_record.key.urlsafe() }}&org=member"
       enctype="multipart/form-data">
@@ -177,7 +181,7 @@
         </tr>
 
         <tr>
-            <td><label for="edPayment">Recibo de pago </label></td>
+            <td><label for="edPayment">Recibo de pago <i>(menos de 1MB)</i> </label></td>
             <td><input type="file" id="edPayment" name="edPayment"></td>
         </tr>
 
@@ -188,7 +192,7 @@
         </table>
     </form>
 
-    <h2>Inscripción</h2>
+    <h3>Inscripción</h3>
     <table border="0" width="100%">
         <tr>
         {% if member_participation %}

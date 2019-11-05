@@ -88,6 +88,14 @@ input.button {
   padding: 5px;
   background-color: gray;
   color: white;
+  font-size: 16pt
+}
+
+.clsSubtitle {
+  margin-top: 20px;
+  padding: 5px;
+  background-color: gray;
+  color: white;
   font-size: 14pt
 }
 

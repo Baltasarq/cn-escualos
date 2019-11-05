@@ -74,6 +74,7 @@ class ModifyParticipationRecordHandler(webapp2.RequestHandler):
 
             jinja = jinja2.get_jinja2(app=self.app)
             self.response.write(jinja.render_template("edit_participation_record.html", **data))
+            logging.info("*** Template rendered")
         except Exception as e:
             logging.error("ERROR: " + gentools.error_from_exception(e))
             self.response.write("ERROR: " + gentools.error_from_exception(e))

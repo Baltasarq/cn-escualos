@@ -5,27 +5,22 @@
 import webapp2
 from google.appengine.ext import ndb
 
-from model.participation_record import ParticipationRecord
-
 
 class RetrievePaymentHandler(webapp2.RequestHandler):
     def get(self):
-        participation_record = ParticipationRecord.retrieve_participation_record(self)
-
-        # Retrieve the member id
+        # Retrieve the payment id
         try:
-            str_member_id = self.request.GET["member_id"]
+            str_payment_id = self.request.GET["id"]
         except KeyError:
-            self.redirect("/error?msg='missing member id for payment in participation record'")
+            self.redirect("/error?msg='missing payment id in participation record'")
             return
 
-        member_id = ndb.Key(urlsafe=str_member_id)
-        member_participation = participation_record.get_participant_info(member_id)
+        payment = ndb.Key(urlsafe=str_payment_id).get().payment
 
         # Return the requested document
         self.response.headers['Content-Type'] = "application/pdf"
-        self.response.headers['Content-Disposition'] = "attachment; filename=cnescualos-resguardo-" + str_member_id.encode('ascii','ignore') + ".pdf"
-        self.response.out.write(member_participation.payment)
+        self.response.headers['Content-Disposition'] = "attachment; filename=cnescualos-resguardo-" + str_payment_id.encode('ascii','ignore') + ".pdf"
+        self.response.out.write(payment)
 
 
 app = webapp2.WSGIApplication([

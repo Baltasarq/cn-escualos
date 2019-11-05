@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170b234-0101-4c18-8245-a36b7783013b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/res/map-target.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/competition/add.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/add.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/competition/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/docserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/docserver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/participation_record/member_participation/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/modify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/participation_record/member_participation/retrieve_payment.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/retrieve_payment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/participation_record/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/modify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/participation_record.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/participation_record.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/competition_entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/competition_entry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_competition.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_competition.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_member_participation_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_member_participation_record.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/edit_participation_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_participation_record.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/member_participation_entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/member_participation_entry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/template.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,25 +73,25 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/handlers/admin/patreon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="recentsLimit" value="5" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/handlers/admin/patreon" />
-      <recent name="$PROJECT_DIR$/handlers/admin" />
-      <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/handlers/admin/trial" />
-      <recent name="$PROJECT_DIR$/res" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/handlers/admin/photo" />
       <recent name="$PROJECT_DIR$/handlers/admin/member" />
       <recent name="$PROJECT_DIR$/handlers/member/record" />
       <recent name="$PROJECT_DIR$/handlers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/res" />
+      <recent name="$PROJECT_DIR$/handlers/admin/patreon" />
+      <recent name="$PROJECT_DIR$/handlers/admin" />
+      <recent name="$PROJECT_DIR$/handlers/admin/trial" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -233,6 +248,13 @@
       <workItem from="1570298337207" duration="447000" />
       <workItem from="1570342639703" duration="29000" />
       <workItem from="1570342693869" duration="206000" />
+      <workItem from="1571052021908" duration="203000" />
+      <workItem from="1571054958963" duration="171000" />
+      <workItem from="1571911096192" duration="13000" />
+      <workItem from="1571911120760" duration="5000" />
+      <workItem from="1572874535818" duration="22000" />
+      <workItem from="1572874578466" duration="17000" />
+      <workItem from="1572874607681" duration="18519000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>
@@ -287,31 +309,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="Bufixing" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/handlers/participation_record/member_participation/modify.py</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Python.AppEngineServer">
+        <watch expression="len(payment_blob)" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1570298567885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="watch">
-      <expression>
-        <expression-string>Member.query(Member.lic==member_lic or Member.soc == member_soc)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Member.query(Member.lic==member_lic)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
+    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1572955192628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

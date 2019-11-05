@@ -12,6 +12,7 @@ from google.appengine.ext import ndb
 from model.member import Member
 from model.participation_record import ParticipationRecord
 from model.participation_record import MemberParticipation
+from model.participation_record import ParticipationRecordPayment
 
 
 class ModifyMemberParticipationForParticipationRecordHandler(webapp2.RequestHandler):
@@ -47,6 +48,12 @@ class ModifyMemberParticipationForParticipationRecordHandler(webapp2.RequestHand
                     Member.show_error_unrecognized_usr(self)
                     return
 
+                # Set the return address
+                return_addr = "/member/participation_record?id=" + participation_record.key.urlsafe()
+                if org == "admin" and usr.is_admin():
+                    return_addr = "/participation_record/modify?id=" + participation_record.key.urlsafe()
+
+                # Prepare the member participation record
                 member_participation = participation_record.get_participant_info(member_key)
 
                 if not member_participation:
@@ -58,7 +65,23 @@ class ModifyMemberParticipationForParticipationRecordHandler(webapp2.RequestHand
                 member_participation.num_companions = num_companions
 
                 if payment_blob:
-                    member_participation.payment = payment_blob
+                    if len(payment_blob) < 1048576:
+                        # Delete the old one
+                        if member_participation.payment:
+                            member_participation.payment.delete()
+
+                        # Create the new payment
+                        participation_payment = ParticipationRecordPayment(
+                               participation_record=participation_record.key,
+                               payment=payment_blob
+                            )
+                        payment_key = participation_payment.put()
+                        member_participation.payment = payment_key
+                    else:
+                        return_addr = "/error?msg=El comprobante de pago es demasiado grande. " \
+                                      "Por favor, reduzca su peso con alguna herramienta como " \
+                                      "smallpdf.com y vuelva a subirlo, o establezca contacto con " \
+                                      "el club."
 
                 if comments:
                     if comments == "-":
@@ -69,11 +92,7 @@ class ModifyMemberParticipationForParticipationRecordHandler(webapp2.RequestHand
                 participation_record.put()
                 time.sleep(1)
 
-                return_addr = "/member/participation_record?id="
-                if org == "admin" and usr.is_admin():
-                    return_addr = "/participation_record/modify?id="
-
-                return self.redirect(return_addr + participation_record.key.urlsafe())
+                return self.redirect(return_addr)
             else:
                 return self.redirect("/error?msg=Not enough data storing member participation.")
         except Exception as e:
