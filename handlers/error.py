@@ -19,7 +19,7 @@ class ErrorHandler(webapp2.RequestHandler):
             msg = None
 
         if not msg:
-            msg = "CRITICAL - contact development team"
+            msg = "CRITICALOSOSOSOS - contact development team"
 
         # Render
         try:
