@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170b234-0101-4c18-8245-a36b7783013b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/res/map-target.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Google_App_Engine_SDK2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/competition/add.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/add.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/competition/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/delete.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/docserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/docserver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/error.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/error.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/participation_record/member_participation/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/delete.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/participation_record/member_participation/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/modify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/participation_record/member_participation/retrieve_payment.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/member_participation/retrieve_payment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/participation_record/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/modify.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/participation_record.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/participation_record.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/competition_entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/competition_entry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_competition.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_competition.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/edit_member_participation_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_member_participation_record.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/edit_participation_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_participation_record.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/member_participation_entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/member_participation_entry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/template.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/template.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -255,6 +246,10 @@
       <workItem from="1572874535818" duration="22000" />
       <workItem from="1572874578466" duration="17000" />
       <workItem from="1572874607681" duration="18519000" />
+      <workItem from="1572967752160" duration="2029000" />
+      <workItem from="1574162725170" duration="1744000" />
+      <workItem from="1574326156602" duration="26000" />
+      <workItem from="1574326201611" duration="678000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>
@@ -316,6 +311,6 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1572955192628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/cnescualos$cnescualos.coverage" NAME="cnescualos Coverage Results" MODIFIED="1574165853883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

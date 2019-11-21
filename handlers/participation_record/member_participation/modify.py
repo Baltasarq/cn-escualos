@@ -66,15 +66,17 @@ class ModifyMemberParticipationForParticipationRecordHandler(webapp2.RequestHand
 
                 if payment_blob:
                     if len(payment_blob) < 1048576:
-                        # Delete the old one
-                        if member_participation.payment:
-                            member_participation.payment.delete()
+                        # Create or modify
+                        participation_payment = None
 
-                        # Create the new payment
-                        participation_payment = ParticipationRecordPayment(
-                               participation_record=participation_record.key,
-                               payment=payment_blob
-                            )
+                        if member_participation.payment:
+                            participation_payment = member_participation.payment.get()
+                            participation_payment.payment=payment_blob
+                        else:
+                            participation_payment = ParticipationRecordPayment(
+                                   participation_record=participation_record.key,
+                                   payment=payment_blob)
+
                         payment_key = participation_payment.put()
                         member_participation.payment = payment_key
                     else:

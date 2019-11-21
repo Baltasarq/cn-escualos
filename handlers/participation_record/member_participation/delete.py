@@ -41,10 +41,10 @@ class DeleteMemberParticipationForParticipationRecordHandler(webapp2.RequestHand
                 Member.show_error_unrecognized_usr(self)
                 return
 
+            # Remove participation data
             participation_record = ParticipationRecord.retrieve_participation_record(self)
             participation_record.remove_member(participant_key)
             participation_record.put()
-            time.sleep(1)
 
             return_address = "/member/participation_record?id="
             if org == "admin" and usr.is_admin():

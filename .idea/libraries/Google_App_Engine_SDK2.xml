@@ -27,6 +27,7 @@
       <root url="file://$USER_HOME$/bin/google-cloud-sdk/platform/google_appengine/lib/pytz-2017.3" />
       <root url="file://$USER_HOME$/bin/google-cloud-sdk/platform/google_appengine/lib/markupsafe-0.15" />
       <root url="file://$USER_HOME$/bin/google-cloud-sdk/platform/google_appengine/lib/deprecated_enum" />
+      <root url="file://$USER_HOME$/bin/google-cloud-sdk/platform/google_appengine/lib/six-1.12.0" />
       <root url="file://$USER_HOME$/bin/google-cloud-sdk/platform/google_appengine/lib/google-api-python-client" />
       <root url="file://$USER_HOME$/bin/google-cloud-sdk/platform/google_appengine/lib/markupsafe-0.23" />
       <root url="file://$USER_HOME$/bin/google-cloud-sdk/platform/google_appengine/lib/protorpc-1.0" />

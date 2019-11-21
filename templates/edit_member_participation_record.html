@@ -162,7 +162,11 @@
                 <label for="edLunch">Se queda a comer: </label>
             </td>
             <td>
-                <input type="checkbox" name="edLunch" id="edLunch" />
+                <input type="checkbox" name="edLunch" id="edLunch"
+                       {% if member_participation.stays_for_lunch %}
+                        checked
+                       {% endif %}
+                    />
             </td>
         </tr>
 
@@ -171,13 +175,13 @@
                 <label for="edCompanions">Acompañantes: </label>
             </td>
             <td>
-                <input type="number" id="edCompanions" name="edCompanions" min="0" value="0"/>
+                <input type="number" id="edCompanions" name="edCompanions" min="0" value="{{ member_participation.num_companions }}"/>
             </td>
         </tr>
 
         <tr>
             <td><label for="edComments">Observaciones: </label></td>
-            <td><textarea id="edComments" name="edComments" cols="60"></textarea></td>
+            <td><textarea id="edComments" name="edComments" cols="60">{{ member_participation.comments }}</textarea></td>
         </tr>
 
         <tr>

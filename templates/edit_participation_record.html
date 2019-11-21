@@ -10,10 +10,12 @@
     <p>{{ competition.date }} <a href="/competition/modify?id={{ competition.key.urlsafe() }}"><b>{{ competition.name }}</b></a>
     <i>{{ competition.where }}</i>
         <p><b>Estadísticas</b><ul>
-            <li>{{ total_participants }} miembros del club participan,</li>
-            <li>+{{ num_companions }} acompañantes,</li>
-            <li>{{ num_lunchers }} se quedan a comer,</li>
-            <li>y {{ total_pax }} es el total de personas que asisten a la prueba.</li>
+            <li>{{ total_pax }} es el total de personas que asisten a la prueba.</li>
+            <ul>
+                <li>{{ total_participants }} miembros del club participan,</li>
+                <li>+{{ num_companions }} acompañantes,</li>
+            </ul>
+            <li>{{ num_lunchers }} se quedan a comer.</li>
         </ul></p>
     </p>
 

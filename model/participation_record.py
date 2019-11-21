@@ -21,6 +21,10 @@ class MemberParticipation(ndb.Model):
     comments = ndb.StringProperty(default="")
     num_companions = ndb.IntegerProperty(default=0)
 
+    def remove_payment(self):
+        if self.payment:
+            self.payment.delete()
+
 
 class MemberTest(ndb.Model):
     uid = ndb.IntegerProperty(required=True, indexed=True)
@@ -102,6 +106,7 @@ class ParticipationRecord(ndb.Model):
 
         # Remove the member
         participant = self.get_participant_info(member_key)
+        participant.remove_payment()
         self.participants.remove(participant)
 
         return
