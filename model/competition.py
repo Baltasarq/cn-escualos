@@ -9,13 +9,16 @@ from model.swim_styles import SwimStyles
 
 
 class Test(ndb.Model):
+    SESSIONS = ["matutina", "de tarde"]
+    TEST_GENDERS = ["masculino", "femenino", "mixto"]
+
     uid = ndb.IntegerProperty(required=True, default=-1)
     distance = ndb.IntegerProperty(required=True)
     style_id = ndb.IntegerProperty(required=True)
     is_relay = ndb.BooleanProperty(default=False)
+    day = ndb.IntegerProperty(default=1)
+    session = ndb.IntegerProperty(default=0)
     gender = ndb.IntegerProperty(default=0)
-
-    TEST_GENDERS = ["masculino", "femenino", "mixto"]
 
     def is_male(self):
         return self.gender == 0
@@ -32,10 +35,18 @@ class Test(ndb.Model):
     def get_style_name(self):
         return SwimStyles.name_from_id(self.style_id)
 
+    def str_from_session(self):
+        return Test.SESSIONS[self.session]
+
+    def str_min_desc(self):
+        return ((" Relevos " if self.is_relay else " ")
+                + (str(self.distance) + "m " + self.get_style_name())
+                + " " + self.get_gender_as_string())
+
     def __str__(self):
-        return (("Relevos " if self.is_relay else "")
-               + (str(self.distance) + "m " + self.get_style_name())
-               + " " + self.get_gender_as_string())
+        return ("Jornada " + str(self.day)
+                + " (" + self.str_from_session() + ")"
+                + self.str_min_desc())
 
 
 class Competition(ndb.Model):
@@ -51,14 +62,17 @@ class Competition(ndb.Model):
 
     def get_sorted_tests(self):
         toret = self.tests
-        toret.sort(key=lambda test: test.distance + (test.style_id * 10) + test.gender)
+        toret.sort(key=lambda test: (test.day * 1000000) + (test.session * 100000)
+                                        + test.distance + (test.style_id * 10) + test.gender)
         return toret
 
-    def add_new_test(self, distance, style_id, is_relay, gender):
+    def add_new_test(self, day, session, distance, style_id, is_relay, gender):
         uid = int(time.time())
 
         test = Test(
             uid=uid,
+            day=day,
+            session=session,
             distance=distance,
             style_id=style_id,
             is_relay=is_relay,

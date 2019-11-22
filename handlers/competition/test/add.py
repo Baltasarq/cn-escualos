@@ -30,6 +30,8 @@ class AddCompetitionTestHandler(webapp2.RequestHandler):
             style_abbrev = self.request.get("edStyle", "")
             is_relayed = (self.request.get("edRelayed", "off") == "on")
             str_gender = (self.request.get("edGender", "0"))
+            str_day = self.request.get("edDay", "1")
+            str_session = self.request.get("edSession", "0")
 
             try:
                 gender = int(str_gender)
@@ -43,6 +45,8 @@ class AddCompetitionTestHandler(webapp2.RequestHandler):
                 return self.redirect("/error?msg=Adding new test to competition: style not found.")
 
             competition.add_new_test(
+                gentools.int_from_str(str_day),
+                gentools.int_from_str(str_session),
                 distance,
                 SwimStyles.id_from_abbrev(style_abbrev),
                 is_relayed,

@@ -33,6 +33,7 @@ class ModifyCompetitionHandler(webapp2.RequestHandler):
                 "usr": usr,
                 "SwimStyles": SwimStyles,
                 "TEST_GENDERS": Test.TEST_GENDERS,
+                "SESSIONS": Test.SESSIONS,
                 "competition": competition
             }
 

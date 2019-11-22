@@ -88,6 +88,20 @@
                     </select>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <label for="edDay">Jornada</label>
+                    <input required="required" type="number" id="edDay" name="edDay" value="1"
+                            style="text-align: right"/>
+                </td>
+                <td>
+                    <select id="edSession" name="edSession">
+                        {% for session in SESSIONS %}
+                            <option value="{{ loop.index0 }}">{{ session }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
         </table>
         <input type="submit" value="Añadir"/>
     </form>

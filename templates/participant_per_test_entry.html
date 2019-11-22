@@ -5,7 +5,7 @@
     {{ member.surname }}, {{ member.name }}
 </td>
 <td>
-    {{ test.__str__() }}
+    {{ test.str_min_desc() }}
 </td>
 <td>
     {{ ElapsedTimeDistance.str_from_milliseconds(participant_per_test.milliseconds) }}

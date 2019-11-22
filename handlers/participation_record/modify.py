@@ -40,8 +40,6 @@ class ModifyParticipationRecordHandler(webapp2.RequestHandler):
                 if participant.stays_for_lunch:
                     num_lunchers += 1 + participant.num_companions
 
-            total_pax = total_participants + num_companions
-
             # Tests
             tests = competition.get_sorted_tests()
             participants_per_test = {}
@@ -69,7 +67,6 @@ class ModifyParticipationRecordHandler(webapp2.RequestHandler):
                 "num_lunchers": num_lunchers,
                 "total_participants": total_participants,
                 "num_companions": num_companions,
-                "total_pax": total_pax
             }
 
             jinja = jinja2.get_jinja2(app=self.app)
