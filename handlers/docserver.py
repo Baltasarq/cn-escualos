@@ -20,11 +20,11 @@ class DocServerHandler(webapp2.RequestHandler):
         try:
             doc = ndb.Key(urlsafe=id).get()
         except:
-            self.redirect("/error?msg='error retrieving document with id: '" + id + "'")
+            self.redirect("/error?msg='error retrieving document with id: \"" + id + "\"'")
             return
 
         if not doc:
-            self.redirect("/error?msg='document not found with id: '" + id + "'")
+            self.redirect("/error?msg='document not found with id: \"" + id + "\"'")
             return
 
         # Return the requested document

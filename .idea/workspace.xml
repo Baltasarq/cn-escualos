@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6170b234-0101-4c18-8245-a36b7783013b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/competition/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/modify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/competition/test/add.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/competition/test/add.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/participation_record/modify.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/participation_record/modify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/competition.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/competition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_competition.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_competition.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_participation_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_participation_record.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/participant_per_test_entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/participant_per_test_entry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/test_entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test_entry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/docserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/docserver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/photoserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/photoserver.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -252,7 +246,8 @@
       <workItem from="1574326156602" duration="26000" />
       <workItem from="1574326201611" duration="4214000" />
       <workItem from="1574414681408" duration="62000" />
-      <workItem from="1574414756754" duration="500000" />
+      <workItem from="1574414756754" duration="748000" />
+      <workItem from="1574767001385" duration="236000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>

@@ -13,15 +13,16 @@ class PhotoServerHandler(webapp2.RequestHandler):
         try:
             id = self.request.GET["id"]
         except KeyError:
-            self.redirect("/error?msg='missing id for photo'")
-            return
+            return self.redirect("/error?msg='missing id for photo'")
 
         # Retrieve the photo from the datastore
-        image_object = ndb.Key(urlsafe=id).get()
+        try:
+            image_object = ndb.Key(urlsafe=id).get()
+        except:
+            return self.redirect("/error?msg='error retrieving photo with id: \"" + id + "\"'")
 
         if not image_object:
-            self.redirect("/error?msg='photo not found with id: ' + id")
-            return
+            return self.redirect("/error?msg='photo not found with id: \"" + id + "\"'")
 
         # Return the requested document
         self.response.headers['Content-Type'] = "image/jpg"
