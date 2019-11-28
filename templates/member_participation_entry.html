@@ -8,6 +8,8 @@
     +{{ member_participation.num_companions }} <i>pax</i>
     {%- endif -%}
 </td>
+
+<!--
 <td>
     {% if member_participation.payment %}
         <a href="/participation_record/member_participation/retrieve_payment?id={{member_participation.payment.urlsafe()}}">
@@ -17,6 +19,8 @@
         Sin resguardo.
     {% endif %}
 </td>
+-->
+
 <td>
     {{ "Se queda a comer." if member_participation.stays_for_lunch else "No se queda a comer." }}
 </td>
