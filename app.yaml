@@ -135,6 +135,14 @@ handlers:
   script: handlers.kernel.app
   login: admin
 
+- url: /admin/complaints/show_all
+  script: handlers.admin.complaints.show_all.app
+  login: admin
+
+- url: /complains/add
+  script: handlers.complains.add.app
+  login: required
+
 - url: /admin_old
   script: handlers.admin_old.app
   login: admin

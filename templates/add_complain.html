@@ -1,0 +1,48 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<script type="text/javascript">
+    function chk_complain_data()
+    {
+        const edComplains = document.getElementById( "edComplain" );
+        const dvError = document.getElementById( "dvError" );
+        let toret = true;
+
+        dvError.innerHTML = "";
+        dvError.style.display = "none";
+
+        if ( edComplains.value.trim().length < 5 ) {
+            toret = false;
+            dvError.innerHTML = "Por favor, introduzca un mensaje significativo.";
+            dvError.style.display = "block";
+        }
+
+        return toret;
+    }
+</script>
+
+<div class="clsTitle"><b>Sugerencias, quejas y felicitaciones</b></div>
+<div id="dvEditComplain">
+<form id="frmComplain"
+      method="post" action="/complains/add"
+      enctype="multipart/form-data"
+      onsubmit="return chk_complain_data()">
+    <table border="0" width="100%">
+    <tr>
+        <td>
+            <label for="edComplain">Sugerencias, quejas, y felicitaciones: </label>
+        </td>
+        <td>
+            <textarea id="edComplain" name="edComplain"
+                    rows="10" cols="80"></textarea>
+        </td>
+    </tr>
+    </table>
+    <input type="submit" value="Guardar" id="btSend" />
+</form>
+</div>
+
+
+<div id="dvError">
+</div>
+
+{% endblock %}

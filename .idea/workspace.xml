@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6170b234-0101-4c18-8245-a36b7783013b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/handlers/admin/complaints/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/admin/complaints/show_all.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/complains/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/complains/add.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/complaint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/angry.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/add_complain.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/show_all_complaints.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit_member_participation_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_member_participation_record.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/member_participation_entry.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/member_participation_entry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_competition.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_competition.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kernel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kernel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/skeleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/skeleton.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,18 +76,18 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/handlers/admin/complains" />
+      <recent name="$PROJECT_DIR$/res" />
+      <recent name="$PROJECT_DIR$/handlers/admin/patreon" />
+      <recent name="$PROJECT_DIR$/handlers/admin" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/handlers/admin/photo" />
       <recent name="$PROJECT_DIR$/handlers/admin/member" />
       <recent name="$PROJECT_DIR$/handlers/member/record" />
       <recent name="$PROJECT_DIR$/handlers" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/res" />
-      <recent name="$PROJECT_DIR$/handlers/admin/patreon" />
-      <recent name="$PROJECT_DIR$/handlers/admin" />
-      <recent name="$PROJECT_DIR$/handlers/admin/trial" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -249,7 +259,7 @@
       <workItem from="1574414756754" duration="748000" />
       <workItem from="1574767001385" duration="374000" />
       <workItem from="1574951595148" duration="28000" />
-      <workItem from="1574951635962" duration="412000" />
+      <workItem from="1574951635962" duration="8479000" />
     </task>
     <task id="LOCAL-00001" summary="Bufixing">
       <created>1513007581389</created>
@@ -304,6 +314,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Bufixing" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model/competition.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Python.AppEngineServer">
         <watch expression="len(payment_blob)" language="Python" />

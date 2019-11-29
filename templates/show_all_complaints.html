@@ -1,0 +1,21 @@
+{% extends "skeleton.html" %}
+{% block content %}
+<div id="dvTitle"><b>Sugerencias, quejas y felicitaciones</b></div>
+<div id="dvItems">
+    <table width="100%" id="tblItems">
+    {% for complaint in complaints %}
+        {% set author = complaint.author.get() %}
+
+        <tr>
+            <td width="20%">{{ complaint.added.date() }}</td>
+            <td>
+                <i>{{ complaint.text }}</i>
+            </td>
+        </tr>
+        <tr><td></td><td>{{ author.surname }}, {{ author.name }}</td></tr>
+    {% else %}
+        No hay quejas/sugerencias/felicitaciones registrados.
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}
