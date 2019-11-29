@@ -42,7 +42,9 @@
         <a target="_blank" href="{{ info.CalendarURL }}"><b>Actividades</b></a>
         <a href="/member/record/show_all"><b>Marcas</b></a>
         <a href="/results"><b>Resultados</b></a>
-        <a href="/complains/add"><b>Sugerencias</b></a>
+        {% if usr %}
+            <a href="/complains/add"><b>Sugerencias</b></a>
+        {% endif %}
     </p>
 </div>
 <div id="dvContainer">
